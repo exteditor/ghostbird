@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Thunderbird",
+      "type": "firefox",
+      "request": "launch",
+      "reAttach": true,
+      "firefoxExecutable": "thunderbird",
+      "reloadOnChange": {
+        "watch": "${workspaceFolder}/dist/ext/*"
+      },
+      "profileDir": "${env:HOME}/path/to/thunderbird-profile/profile.esr",
+      "keepProfileChanges": false,
+      "internalConsoleOptions": "openOnSessionStart",
+      "addonPath": "${workspaceFolder}/dist/ext/"
+    }
+  ]
+}

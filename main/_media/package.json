@@ -1,0 +1,79 @@
+{
+  "*note*": [
+    "This package.json is here for build config",
+    "Version info is managed as git tags and embedded on publish",
+    "See CONTRIBUTING.md for details"
+  ],
+  "name": "@exteditor/ghostbird",
+  "license": "MPL-2.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "yarn@4.9.4",
+  "engines": {
+    "thunderbird": ">= 128"
+  },
+  "homepage": "https://github.com/exteditor/ghostbird/",
+  "repository": {
+    "type": "git",
+    "url": "github:exteditor/ghostbird"
+  },
+  "scripts": {
+    "sdk": "yarn dlx @yarnpkg/sdks",
+    "check": "biome check && run check-type",
+    "fix": "biome check --write",
+    "doc": "run check-type && typedoc",
+    "doc:md": "run doc --plugin typedoc-plugin-markdown",
+    "postinstall": "run generate-index-ts",
+    "format": "biome format --write",
+    "lint": "biome lint",
+    "start": "web-ext run --firefox=$(where thunderbird)",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "barrelsby": "node --experimental-strip-types tools/barrelsby.ts",
+    "check-type": "tsc --build --emitDeclarationOnly",
+    "build-js": "NODE_OPTIONS=\"--no-experimental-strip-types ${NODE_OPTIONS}\" tsdown --config=tools/tsdown_config.ts",
+    "build-xpi": "web-ext build",
+    "build": "run check && run test && run build-js && run build-xpi",
+    "dev": "run watch & run start",
+    "fmt": "run format",
+    "generate-index-ts": "run barrelsby",
+    "index-ts": "run barrelsby",
+    "js": "run build-js",
+    "tsdown": "run build-js",
+    "watch": "run build-js --watch",
+    "xpi": "run build-xpi"
+  },
+  "webExt": {
+    "sourceDir": "dist/ext/",
+    "artifactsDir": "dist/",
+    "build": {
+      "filename": "{short_name}-{version}.xpi"
+    },
+    "run": {
+      "devtools": true,
+      "firefox": "thunderbird"
+    }
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.2.0",
+    "@std/text": "jsr:^1.0.16",
+    "@types/node": "^24.3.0",
+    "@types/thunderbird-webext-browser": "^127.0.0",
+    "barrelsby": "^2.8.1",
+    "git-describe": "^4.1.1",
+    "jsdom": "^26.1.0",
+    "rolldown": "latest",
+    "tsdown": "^0.14.1",
+    "typedoc": "^0.28.12",
+    "typedoc-plugin-markdown": "^4.8.1",
+    "typedoc-plugin-mermaid": "^1.12.0",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4",
+    "web-ext": "^8.9.0",
+    "webext-options-sync": "^4.3.0"
+  },
+  "peerDependencies": {
+    "@vitest/ui": "*"
+  }
+}

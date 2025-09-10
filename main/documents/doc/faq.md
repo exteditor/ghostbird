@@ -1,0 +1,135 @@
+[**@exteditor/ghostbird**](../../README.md)
+
+***
+
+[@exteditor/ghostbird](../../modules.md) / doc/faq
+
+## FAQ (general)
+
+### What is Ghostbird?
+
+* [Ghostbird](https://github.com/exteditor/ghostbird/) is a Thunderbird add-on that allows you to edit email text in your favorite text editor.
+* Original [GhostText][gt] is an add-on for browsers that lets you edit textboxes on the webpage using your favorite text editor.
+* Both work by connecting to a GhostText server, which is listening on port 4001 (the default), via [WebSocket](https://en.wikipedia.org/wiki/WebSocket) and relaying text between the compose window and the text editor.
+
+### Is it safe to use?
+
+* See [FAQ section in README.md](../../modules.md).
+
+## FAQ (usage)
+
+### Which Thunderbird versions are supported?
+
+* Thunderbird 128 (We will mainly support ESR)
+* Testing with newer versions is welcome. Please report if you noticed something in newer Thunderbird versions.
+
+### What text editors are supported?
+
+* See [Requirements section in README.md](../../modules.md) for the list, but it's not the canonical one. If your favorite editor isn't listed, try searching for it.
+* If you tried the add-on, please add your text editor to [the wiki page](https://github.com/exteditor/ghostbird/wiki/Text_editors_known_to_work_with).
+
+### How do I install it?
+
+* See [Installation section in README.md](../../modules.md).
+
+### How do I start it?
+
+* See [Usage section in README.md](../../modules.md).
+
+### How do I troubleshoot connection issues?
+
+* Make sure that the GhostText server is listening. See the [Troubleshooting page of original GhostText](https://ghosttext.fregante.com/troubleshooting/#unable-to-connect).
+
+### Can I use this with multiple Thunderbird accounts or emails?
+
+* Yes, it should work as long as your text editor supports editing multiple files at once.
+
+### I found an issue. Where should I report it?
+
+* Try searching the GitHub pages like [discussion][discussion], [wiki][wiki], and [issue][issue] pages. Please post to the discussion or issue page if you found nothing.
+
+### How do I switch between HTML mode and Plain Text mode? {#mode}
+
+> TL;DR: Set your preferred format in `Account Settings`>`Composition & Addressing`, then start a new message.
+
+* In recent versions of Thunderbird, editing mode can't be switched after you start writing an email.
+* Confusingly, editing mode is set at two places: profile-wide and per-account.
+  * You can set profile-wide option at `Setting`>`Composition`>`Sending Format` section. Choose one from `Automatic`, `Both HTML and Plain Text`, `Only HTML`, and `Only Plain Text`.
+  * You can set per-account option at `Account Setting`>`Composition & Addressing`>`Composition` section. Check or uncheck the `Compose messages in HTML format` checkbox.
+* After adjusting the option, you have to start a `New Message`.
+
+## FAQ (project)
+
+### Roadmap?
+
+* See [README.md](../../modules.md).
+
+### The button icon is terrible. How do I contribute?
+
+* See [README.md](../../modules.md).
+* See [CONTRIBUTING.md](../CONTRIBUTING.md).
+* As for the icon, I'm planning to add an option to choose between icons so that you can switch them. Please upvote [the issue][chooseicon] if it bothers you.
+* New icons are welcome, of course, preferably in SVG.
+
+### Why not just fork the original GhostText add-on, or contribute to it? {#why}
+
+* I have a specific requirement to extend [the GhostText protocol][protocol] on both the client and server sides, which would allow configuration made in the client UI to be sent to the server. I think the original add-on, which is supposed to be simple, is not suitable for that purpose.
+* Thunderbird-specific changes also seem hard to incorporate without complicating the code. For example, the concepts of a compose window and address lines do not exist in browsers.
+* That said, I learned a lot from the original add-on.
+
+### Why not use External Editor as a base?
+
+(For those who don't know: External Editor is an add-on for Thunderbird that lets you edit email text in an external text editor, which I took over maintaining some years ago; it is now in a stale state. It doesn't work on Thunderbird > 68 and I wanted to revive it.)
+
+* It's not possible with the current Thunderbird API to launch arbitrary external applications like text editors for security reasons. The workarounds required are essentially what GhostText already does.
+* So we have to start from scratch either way.
+* I intend to replicate some of the features it had in Ghostbird. See [Roadmap](../../modules.md).
+
+## FAQ (developers)
+
+### How does the add-on work?
+
+* [How it works section in design.md](design.md) describes how user actions are handled.
+* See [Module Dependencies](design.md) for what each module does.
+* Reading through the bundled `compose.js`, `background.js` and `options.js` may be clearer since they're stripped of TypeScript tricks.
+
+### Why Yarn?
+
+* I love cats and Yarn has [a cat logo](https://github.com/yarnpkg/assets).
+
+### Where are `index.ts`?
+
+* They are not checked into the repo and are generated by a tool.
+* Run `yarn index-ts` to generate them. An initial `yarn install` or `yarn build` also generates them.
+* [Barrelsby](https://github.com/bencoveney/barrelsby) performs the actual work. See [`tools/barrelsby.ts`](../../_media/barrelsby.ts).
+
+### What are these `api.ts` files? They seem to only contain interfaces that aren't implemented.
+
+* Implementations are in other modules, mostly in `thunderbird/*.ts`.
+* See [About `api.ts`](design.md) for details.
+* See [Module Dependencies](design.md) for relations.
+
+### Why do some classes have `static isSingleton` property?
+
+* [`root/startup.ts`][startup] scans for classes that have a `static isSingleton` property defined and instantiates them.
+* See [About `startup.ts`](design.md) for details.
+* See [faq-architectural.md](faq-architectural.md) for some justifications.
+
+### How do I find where a certain functionality is implemented?
+
+* We try to keep most of the logic under `src/ghosttext-session/`. I'd start looking there.
+
+### Aren't these docs too verbose for a small add-on?
+
+* Sorry for that. Actually, these document ware written before I started coding, so it helps me clarify my thoughts.
+* I'll keep this up to date.
+* If a file exceeds 500 lines, I'll consider moving some parts to [a wiki page][wiki].
+* I also want to share my thoughts with potential contributors. If you find any parts that are unclear or inaccurate, please let me know via issues or discussions.
+
+[wiki]: https://github.com/exteditor/ghostbird/wiki
+[issue]: https://github.com/exteditor/ghostbird/issues
+[discussion]: https://github.com/exteditor/ghostbird/discussions
+[startup]: ../../_media/startup.ts
+[protocol]: https://github.com/fregante/GhostText/blob/main/PROTOCOL.md
+[gt]: https://ghosttext.fregante.com/
+[chooseicon]: https://github.com/exteditor/ghostbird/issues/<placeholder>
