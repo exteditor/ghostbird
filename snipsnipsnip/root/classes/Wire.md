@@ -6,7 +6,7 @@
 
 # Class: Wire\<TCatalog\>
 
-Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:172](https://github.com/exteditor/ghostbird/blob/ad2fee8e95e8d305452bb102c3339bbb3c7e8162/src/root/util/wire.ts#L172)
+Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:172](https://github.com/exteditor/ghostbird/blob/1b5d1af7a5d928cd4724811ce3a123d2a427611d/src/root/util/wire.ts#L172)
 
 A factory to create instances of registered classes.
 
@@ -27,7 +27,7 @@ A factory to create instances of registered classes.
 
 > **new Wire**\<`TCatalog`\>(`registry`, `nameForDuplicatesOf`): `Wire`\<`TCatalog`\>
 
-Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:175](https://github.com/exteditor/ghostbird/blob/ad2fee8e95e8d305452bb102c3339bbb3c7e8162/src/root/util/wire.ts#L175)
+Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:175](https://github.com/exteditor/ghostbird/blob/1b5d1af7a5d928cd4724811ce3a123d2a427611d/src/root/util/wire.ts#L175)
 
 #### Parameters
 
@@ -49,7 +49,7 @@ Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:175](https://github.
 
 > `readonly` **cache**: `Map`\<keyof `TCatalog` & `string`, `unknown`\>
 
-Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:173](https://github.com/exteditor/ghostbird/blob/ad2fee8e95e8d305452bb102c3339bbb3c7e8162/src/root/util/wire.ts#L173)
+Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:173](https://github.com/exteditor/ghostbird/blob/1b5d1af7a5d928cd4724811ce3a123d2a427611d/src/root/util/wire.ts#L173)
 
 ## Methods
 
@@ -57,7 +57,7 @@ Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:173](https://github.
 
 > **createOne**\<`T`\>(`info`): `T`
 
-Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:208](https://github.com/exteditor/ghostbird/blob/ad2fee8e95e8d305452bb102c3339bbb3c7e8162/src/root/util/wire.ts#L208)
+Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:208](https://github.com/exteditor/ghostbird/blob/1b5d1af7a5d928cd4724811ce3a123d2a427611d/src/root/util/wire.ts#L208)
 
 Instantiate the class, or get the cached instance if one is available.
 
@@ -87,7 +87,7 @@ Instantiate the class, or get the cached instance if one is available.
 
 > **resolveAll**\<`Name`\>(`deps`): `TCatalog`\[`Name`\][]
 
-Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:185](https://github.com/exteditor/ghostbird/blob/ad2fee8e95e8d305452bb102c3339bbb3c7e8162/src/root/util/wire.ts#L185)
+Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:185](https://github.com/exteditor/ghostbird/blob/1b5d1af7a5d928cd4724811ce3a123d2a427611d/src/root/util/wire.ts#L185)
 
 Prepare instances of registered classes.
 
@@ -117,7 +117,7 @@ Prepare instances of registered classes.
 
 > **resolveOne**\<`Name`\>(`name`): `TCatalog`\[`Name`\]
 
-Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:189](https://github.com/exteditor/ghostbird/blob/ad2fee8e95e8d305452bb102c3339bbb3c7e8162/src/root/util/wire.ts#L189)
+Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:189](https://github.com/exteditor/ghostbird/blob/1b5d1af7a5d928cd4724811ce3a123d2a427611d/src/root/util/wire.ts#L189)
 
 Creates or retrieves an instance of the named class.
 
@@ -147,7 +147,7 @@ Creates or retrieves an instance of the named class.
 
 > **wire**\<`TCtor`\>(`ctor`, `deps`): [`Resolved`](../type-aliases/Resolved.md)\<`TCatalog`, `TCtor`\>
 
-Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:180](https://github.com/exteditor/ghostbird/blob/ad2fee8e95e8d305452bb102c3339bbb3c7e8162/src/root/util/wire.ts#L180)
+Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:180](https://github.com/exteditor/ghostbird/blob/1b5d1af7a5d928cd4724811ce3a123d2a427611d/src/root/util/wire.ts#L180)
 
 Instantiate the given constructor with the dependencies that this container has
 

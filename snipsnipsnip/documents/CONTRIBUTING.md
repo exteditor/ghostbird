@@ -7,7 +7,7 @@
 # Contributing
 
 * Feel free to open issues and submit pull requests.
-* By contributing, you agree that your contributions will be licensed under the [MPL 2.0](https://www.mozilla.org/MPL/2.0/).
+* By contributing, you agree that your contributions will be licensed under the [GPLv3 or later](https://spdx.org/licenses/GPL-3.0-or-later.html).
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/exteditor/ghostbird?quickstart=1)
 
