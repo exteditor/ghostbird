@@ -1,6 +1,6 @@
 # Ghostbird: GhostText for Thunderbird :nest_with_eggs::mailbox::ghost:
 
-[![Supports Thunderbird ESR](https://img.shields.io/badge/supports-Thunderbird_128_ESR-0a84ff?logo=thunderbird)][tb]<br>
+[![Supports Thunderbird ESR](https://img.shields.io/badge/supports-Thunderbird_140_ESR-0a84ff?logo=thunderbird)][tb]<br>
 [![Status: Alpha](https://img.shields.io/badge/project_status-alpha-yellow)][rels]
 [![Latest release](https://img.shields.io/github/v/release/exteditor/ghostbird?include_prereleases&logo=refinedgithub&logoColor=white)][rels]<br>
 [![Github Actions Status](https://github.com/exteditor/ghostbird/actions/workflows/build.yml/badge.svg)](https://github.com/exteditor/ghostbird/actions/workflows/build.yml)
@@ -11,7 +11,7 @@ This repo contains an in-development Thunderbird add-on that works as a [GhostTe
 
 ## Requirements
 
-* [Thunderbird 128][tb] (We will mainly support ESR releases)
+* [Thunderbird 140][tb] (We will mainly support ESR releases)
 * A text editor that has a GhostText server add-on installed and running:
 
   [![Sublime Text][sublimetext-svg]](https://sublime.wbond.net/packages/GhostText)
