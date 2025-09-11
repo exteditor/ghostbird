@@ -53,6 +53,14 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) to get started. Basically `yarn && yarn
 4. Write your email in the text editor.
 5. Close your text editor to stop Ghostbird.
 
+* Example using Notepad++ via GhostText-Any
+
+  <img width="600" height="302" alt="Screenshot using Notepad++ with GhostText-Any" src="https://github.com/user-attachments/assets/a4f92beb-a6f2-4a67-ae94-aa02af64539e" />
+
+## How it works
+
+* See [design.md](./doc/design.md) for details.
+
 ```mermaid
 flowchart LR
 subgraph Thunderbird
@@ -168,7 +176,7 @@ We need help with:
 
 ### Why not just fork the original GhostText add-on, or contribute to it?
 
-* See [doc/faq.md](./doc/faq.md#why).
+* See [faq.md](./doc/faq.md#why).
 
 ### When will it be available on addons.thunderbird.net?
 
