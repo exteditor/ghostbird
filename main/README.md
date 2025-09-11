@@ -4,7 +4,7 @@
 
 # Ghostbird: GhostText for Thunderbird :nest_with_eggs::mailbox::ghost:
 
-[![Supports Thunderbird ESR](https://img.shields.io/badge/supports-Thunderbird_128_ESR-0a84ff?logo=thunderbird)][tb]<br>
+[![Supports Thunderbird ESR](https://img.shields.io/badge/supports-Thunderbird_140_ESR-0a84ff?logo=thunderbird)][tb]<br>
 [![Status: Alpha](https://img.shields.io/badge/project_status-alpha-yellow)][rels]
 [![Latest release](https://img.shields.io/github/v/release/exteditor/ghostbird?include_prereleases&logo=refinedgithub&logoColor=white)][rels]<br>
 [![Github Actions Status](https://github.com/exteditor/ghostbird/actions/workflows/build.yml/badge.svg)](https://github.com/exteditor/ghostbird/actions/workflows/build.yml)
@@ -15,7 +15,7 @@ This repo contains an in-development Thunderbird add-on that works as a [GhostTe
 
 ## Requirements
 
-* [Thunderbird 128][tb] (We will mainly support ESR releases)
+* [Thunderbird 140][tb] (We will mainly support ESR releases)
 * A text editor that has a GhostText server add-on installed and running:
 
   [![Sublime Text][sublimetext-svg]](https://sublime.wbond.net/packages/GhostText)
@@ -56,6 +56,14 @@ See [CONTRIBUTING.md](documents/CONTRIBUTING.md) to get started. Basically `yarn
    * If the connection fails, the button will turn red <img src="_media/red.svg" width="24" height="24" border="1">. Make sure that the GhostText server is listening. See [Troubleshooting page of original GhostText](https://ghosttext.fregante.com/troubleshooting/#unable-to-connect).
 4. Write your email in the text editor.
 5. Close your text editor to stop Ghostbird.
+
+* Example using Notepad++ via GhostText-Any
+
+  <img width="600" height="302" alt="Screenshot using Notepad++ with GhostText-Any" src="https://github.com/user-attachments/assets/a4f92beb-a6f2-4a67-ae94-aa02af64539e" />
+
+## How it works
+
+* See [design.md](documents/doc/design.md) for details.
 
 ```mermaid
 flowchart LR
@@ -172,7 +180,7 @@ We need help with:
 
 ### Why not just fork the original GhostText add-on, or contribute to it?
 
-* See [doc/faq.md](documents/doc/faq.md).
+* See [faq.md](documents/doc/faq.md).
 
 ### When will it be available on addons.thunderbird.net?
 
