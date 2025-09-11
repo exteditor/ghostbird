@@ -1,8 +1,8 @@
 # Ghostbird: GhostText for Thunderbird :nest_with_eggs::mailbox::ghost:
 
-[![Supports Thunderbird ESR](https://img.shields.io/badge/supports-Thunderbird_140_ESR-0a84ff?logo=thunderbird)][tb]<br>
+[![Supports Thunderbird ESR](https://img.shields.io/badge/supports-Thunderbird_140_ESR-0a84ff?logo=thunderbird&logoSize=auto)][tb]<br>
 [![Status: Alpha](https://img.shields.io/badge/project_status-alpha-yellow)][rels]
-[![Latest release](https://img.shields.io/github/v/release/exteditor/ghostbird?include_prereleases&logo=refinedgithub&logoColor=white)][rels]<br>
+[![Latest release](https://img.shields.io/github/v/release/exteditor/ghostbird?include_prereleases&logo=refinedgithub&logoColor=white&logoSize=auto)][rels]<br>
 [![Github Actions Status](https://github.com/exteditor/ghostbird/actions/workflows/build.yml/badge.svg)](https://github.com/exteditor/ghostbird/actions/workflows/build.yml)
 
 A [GhostText][gt] implementation for the [Thunderbird][tb] email client.
@@ -41,7 +41,7 @@ This add-on is not yet available on [addons.thunderbird.net](https://addons.thun
 
 ### Build from source
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) to get started. Basically `yarn && yarn build`.
+Basically `yarn && yarn build`. See [CONTRIBUTING.md](./CONTRIBUTING.md) to get started.
 
 ## Usage
 
@@ -216,15 +216,16 @@ If you've looked at the options above and still want to motivate the maintainer 
 [![Managed with Yarn](https://img.shields.io/badge/managed_with-Yarn-2c8ebb?logo=yarn&logoColor=white)](https://yarnpkg.com)
 [![rolled with barrelsby](https://img.shields.io/badge/%F0%9F%9B%A2rolled_with-Barrelsby-white)](https://github.com/bencoveney/barrelsby)
 [![Typed with tsc](https://img.shields.io/badge/typed_with-tsc-3178Cc?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
-[![Linted with Biome](https://img.shields.io/badge/linted_with-Biome-60a5fa?logo=biome)](https://biomejs.dev)
-[![Tested with Vitest](https://img.shields.io/badge/tested_with-Vitest-6e9f18?logo=vitest)](https://vitest.dev)
+[![Linted with Biome](https://img.shields.io/badge/linted_with-Biome-60a5fa?logo=biome&logoSize=auto)](https://biomejs.dev)
+[![Tested with Vitest](https://img.shields.io/badge/tested_with-Vitest-6e9f18?logo=vitest&logoSize=auto)](https://vitest.dev)
 [![Bundled with tsdown](https://img.shields.io/badge/bundled_with-tsdown-ff7e17?logo=rolldown)](https://tsdown.dev)
 [![Packaged with web-ext](https://img.shields.io/badge/packaged_with-web--ext-00d230?logo=mozilla)](https://github.com/mozilla/web-ext#web-ext)
 
 ## License
 
-[![License: MPL-2.0](https://img.shields.io/badge/license-MPL--2.0-00d230?logo=mozilla)](./LICENSE)<br>
-Ghostbird is licensed under [MPL-2.0](./LICENSE) by @snipsnipsnip and contributors. See also [NOTICE](./ext/NOTICE.md).
+[![License: MPL-2.0](https://img.shields.io/badge/license-MPL--2.0-00d230?logo=mozilla)](./LICENSE.mpl)
+[![License: GPLv3](https://img.shields.io/badge/license-GPLv3-bd0000?logo=gplv3&logoSize=auto)](./LICENSE.gpl)<br>
+Ghostbird is [dual-licensed under (MPL-2.0 OR GPL-3.0-or-later)](./LICENSE). See also [NOTICE](./ext/NOTICE.md).
 
 [proj]: https://github.com/exteditor/ghostbird/projects
 [tb]: https://thunderbird.net/

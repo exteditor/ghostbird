@@ -5,7 +5,7 @@
     "See CONTRIBUTING.md for details"
   ],
   "name": "@exteditor/ghostbird",
-  "license": "MPL-2.0",
+  "license": "MPL-2.0 OR GPL-3.0-or-later",
   "private": true,
   "type": "module",
   "packageManager": "yarn@4.9.4",

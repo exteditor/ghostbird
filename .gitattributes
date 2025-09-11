@@ -2,4 +2,5 @@
 /.yarn/releases/*    binary
 /.yarn/plugins/**/*  binary
 /.pnp.*              linguist-generated
+*.svg binary
 * text=auto eol=lf
