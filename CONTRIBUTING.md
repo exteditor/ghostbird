@@ -8,7 +8,7 @@
 ## Introduction
 
 * Ghostbird is a Thunderbird add-on that allows you to edit email text in your favorite text editor using the [GhostText protocol][protocol].
-* It works by connecting to a GhostText server, listening on port 4001 (the default), via WebSocket and relaying messages between the compose window and the server.
+* It works by connecting to a GhostText server (listening on port 4001 by default) via WebSocket and relaying messages between the compose window and the server.
 * You can find a sequence diagram in [`doc/design.md`](./doc/design.md#sequence-diagram).
 
 ## Tools
@@ -44,7 +44,7 @@ Running `yarn` will fetch the rest of the tools, but you need at least the follo
 * Run `yarn check` and `yarn fix` to lint and format.
 * Commit and push your changes.
 * Create a pull request.
-* Dogfood your changes in Thunderbird in the meantime. (You're using Thunderbird daily, right?)
+* Install the built add-on and dogfood your changes in Thunderbird in the meantime. (You're using Thunderbird daily, right?)
 
 ## Individual tasks
 
@@ -56,7 +56,7 @@ Running `yarn` will fetch the rest of the tools, but you need at least the follo
 ### Read
 
 * See the [Structure section of `design.md`](./doc/design.md#structure) for how the code is organized.
-* Run `yarn doc` to generate API documents.
+* Run `yarn doc` to generate API documentation.
 * Ask on the [issue][issue] or [discussion][discussion] pages if documentation is insufficient to figure out how to implement something.
 
 ### Code
@@ -77,12 +77,9 @@ Running `yarn` will fetch the rest of the tools, but you need at least the follo
 ### Debug
 
 * It's convenient to use [`yarn exec web-ext run`](https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/) to start Thunderbird with Ghostbird loaded temporarily. It's aliased as `yarn start`.
-* By default Thunderbird will start with a blank profile, so you may want to place a config file like this at `$HOME/.web-ext-config.mjs` to specify your profile as [a template](https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/#use-a-custom-profile) for the test environment:
-
-```js
-export default { run: { firefoxProfile: '/your/Thunderbird/Profile/directory.default' } }
-```
-
+  * However, by default, it starts Firefox, which is not what we want.
+  * Copy [`.web-ext-config.example.mjs`](./.web-ext-config.example.mjs) to `.web-ext-config.mjs` and adjust to your environment.
+* `web-ext` will start Thunderbird with a blank profile. You may want to use `--keep-profile-changes` to prepare [a testing profile](https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/#use-a-custom-profile).
 * Also, VSCode can be used as a debugger. See [`.vscode/launch.example.json`](./.vscode/launch.example.json) for an example config. Copy to `.vscode/launch.json` and edit the paths as needed.
 
 ### Commit

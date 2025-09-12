@@ -2,6 +2,7 @@ index.ts
 build/
 .vscode/
 .zed/
+.web-ext-config.mjs
 
 # Logs
 logs
