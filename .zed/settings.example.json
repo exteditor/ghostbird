@@ -1,0 +1,11 @@
+// run `yarn sdk base` to prepare .yarn/sdks
+// https://zed.dev/docs/languages/yarn
+{
+  "lsp": {
+    "vtsls": {
+      "initialization_options": {
+        "typescript.sdk": ".yarn/sdks/typescript/lib"
+      }
+    }
+  }
+}

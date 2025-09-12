@@ -1,5 +1,7 @@
 index.ts
 build/
+.vscode/
+.zed/
 
 # Logs
 logs
