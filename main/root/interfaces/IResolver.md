@@ -6,7 +6,7 @@
 
 # Interface: IResolver\<TCatalog\>
 
-Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:89](https://github.com/exteditor/ghostbird/blob/122a30c8def5b15ba653004ac7bef44a1e954b72/src/root/util/wire.ts#L89)
+Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:89](https://github.com/exteditor/ghostbird/blob/67d3c91a05b6bd66bf135feb30eaaaacf143a9e0/src/root/util/wire.ts#L89)
 
 ## Type Parameters
 
@@ -20,7 +20,7 @@ Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:89](https://github.c
 
 > **createOne**\<`T`\>(`info`): `T`
 
-Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:97](https://github.com/exteditor/ghostbird/blob/122a30c8def5b15ba653004ac7bef44a1e954b72/src/root/util/wire.ts#L97)
+Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:97](https://github.com/exteditor/ghostbird/blob/67d3c91a05b6bd66bf135feb30eaaaacf143a9e0/src/root/util/wire.ts#L97)
 
 Instantiate the class, or get the cached instance if one is available.
 
@@ -46,7 +46,7 @@ Instantiate the class, or get the cached instance if one is available.
 
 > **resolveAll**\<`Name`\>(`v`): `TCatalog`\[`Name`\][]
 
-Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:101](https://github.com/exteditor/ghostbird/blob/122a30c8def5b15ba653004ac7bef44a1e954b72/src/root/util/wire.ts#L101)
+Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:101](https://github.com/exteditor/ghostbird/blob/67d3c91a05b6bd66bf135feb30eaaaacf143a9e0/src/root/util/wire.ts#L101)
 
 Prepare instances of registered classes.
 
@@ -72,7 +72,7 @@ Prepare instances of registered classes.
 
 > **resolveOne**\<`Name`\>(`name`): `TCatalog`\[`Name`\]
 
-Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:93](https://github.com/exteditor/ghostbird/blob/122a30c8def5b15ba653004ac7bef44a1e954b72/src/root/util/wire.ts#L93)
+Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:93](https://github.com/exteditor/ghostbird/blob/67d3c91a05b6bd66bf135feb30eaaaacf143a9e0/src/root/util/wire.ts#L93)
 
 Creates or retrieves an instance of the named class.
 

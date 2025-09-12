@@ -8,7 +8,7 @@
 
 > **backgroundWire**\<`TRoot`\>(): \<`TCtor`\>(`ctor`, `deps?`) => [`Resolved`](../type-aliases/Resolved.md)\<`TRoot` & `object`, `TCtor`\>
 
-Defined in: [work/ghostbird/ghostbird/src/root/background\_wire.ts:24](https://github.com/exteditor/ghostbird/blob/122a30c8def5b15ba653004ac7bef44a1e954b72/src/root/background_wire.ts#L24)
+Defined in: [work/ghostbird/ghostbird/src/root/background\_wire.ts:24](https://github.com/exteditor/ghostbird/blob/67d3c91a05b6bd66bf135feb30eaaaacf143a9e0/src/root/background_wire.ts#L24)
 
 ## Type Parameters
 
