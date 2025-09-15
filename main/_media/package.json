@@ -64,7 +64,7 @@
     "git-describe": "^4.1.1",
     "jsdom": "^26.1.0",
     "rolldown": "latest",
-    "tsdown": "^0.14.1",
+    "tsdown": "^0.15.1",
     "typedoc": "^0.28.12",
     "typedoc-plugin-markdown": "^4.8.1",
     "typedoc-plugin-mermaid": "^1.12.0",
@@ -75,5 +75,10 @@
   },
   "peerDependencies": {
     "@vitest/ui": "*"
+  },
+  "peerDependenciesMeta": {
+    "@vitest/ui": {
+      "optional": true
+    }
   }
 }

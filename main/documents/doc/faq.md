@@ -26,7 +26,7 @@
 ### What text editors are supported?
 
 * See [Requirements section in README.md](../../modules.md), but it isn't the official list. If your favorite editor isn't listed, try searching for it.
-* If you tried the add-on, please add your text editor to [the wiki page](https://github.com/exteditor/ghostbird/wiki/Text_editors_known_to_work_with).
+* If you tried the add-on, please add your favorite text editor to [the wiki page](https://github.com/exteditor/ghostbird/wiki/TextEditorsKnownToWorkWith) if it's not there.
 
 ### How do I install it?
 
@@ -59,7 +59,7 @@
     <img width="400" height="194" title="profile-wide email format config" alt="profile-wide email format config" src="https://github.com/user-attachments/assets/cbbe7494-1cce-4da8-944f-f5b99d925de4" />
 
   * You can set per-account option at `Account Setting`>`Composition & Addressing`>`Composition` section. Check or uncheck the `Compose messages in HTML format` checkbox.
- 
+
     <img width="400" height="184" alt="per-account email format config" title="per-account email format config" src="https://github.com/user-attachments/assets/9305cec5-dc83-4893-8128-bdbaadaa9f6f" />
 
 * After adjusting the option, you have to start a `New Message`.

@@ -6,7 +6,7 @@
 
 # Interface: IClassInfo\<TCatalog, T, TArgs\>
 
-Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:18](https://github.com/exteditor/ghostbird/blob/ac51a24b1e01c857bb0608c7bc14825c2f36fc86/src/root/util/wire.ts#L18)
+Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:18](https://github.com/exteditor/ghostbird/blob/a08389d8cd1aeb7db7e822d763f0066efa11400a/src/root/util/wire.ts#L18)
 
 A class constructor with some metadata to be registered to the container.
 
@@ -30,7 +30,7 @@ A class constructor with some metadata to be registered to the container.
 
 > `optional` **aliases**: keyof `TCatalog` & `string` \| keyof `TCatalog` & `string`[]
 
-Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:48](https://github.com/exteditor/ghostbird/blob/ac51a24b1e01c857bb0608c7bc14825c2f36fc86/src/root/util/wire.ts#L48)
+Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:48](https://github.com/exteditor/ghostbird/blob/a08389d8cd1aeb7db7e822d763f0066efa11400a/src/root/util/wire.ts#L48)
 
 Optional alternative names to register the class as.
 
@@ -40,7 +40,7 @@ Optional alternative names to register the class as.
 
 > **ctor**: (...`args`) => `T`
 
-Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:38](https://github.com/exteditor/ghostbird/blob/ac51a24b1e01c857bb0608c7bc14825c2f36fc86/src/root/util/wire.ts#L38)
+Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:38](https://github.com/exteditor/ghostbird/blob/a08389d8cd1aeb7db7e822d763f0066efa11400a/src/root/util/wire.ts#L38)
 
 The constructor of the class.
 
@@ -60,7 +60,7 @@ The constructor of the class.
 
 > **deps**: `string` & keyof `TCatalog`[]
 
-Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:44](https://github.com/exteditor/ghostbird/blob/ac51a24b1e01c857bb0608c7bc14825c2f36fc86/src/root/util/wire.ts#L44)
+Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:44](https://github.com/exteditor/ghostbird/blob/a08389d8cd1aeb7db7e822d763f0066efa11400a/src/root/util/wire.ts#L44)
 
 Names of dependencies that the constructor requires.
 
@@ -70,7 +70,7 @@ Names of dependencies that the constructor requires.
 
 > **isSingleton**: `boolean`
 
-Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:24](https://github.com/exteditor/ghostbird/blob/ac51a24b1e01c857bb0608c7bc14825c2f36fc86/src/root/util/wire.ts#L24)
+Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:24](https://github.com/exteditor/ghostbird/blob/a08389d8cd1aeb7db7e822d763f0066efa11400a/src/root/util/wire.ts#L24)
 
 Specifies the lifetime of the class.
 If `true`, only one instance is created and shared.
@@ -82,7 +82,7 @@ If `false`, a new instance is created each time it is needed.
 
 > **name**: keyof `TCatalog` & `string`
 
-Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:34](https://github.com/exteditor/ghostbird/blob/ac51a24b1e01c857bb0608c7bc14825c2f36fc86/src/root/util/wire.ts#L34)
+Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:34](https://github.com/exteditor/ghostbird/blob/a08389d8cd1aeb7db7e822d763f0066efa11400a/src/root/util/wire.ts#L34)
 
 The name of the class as a dependency.
 
@@ -92,7 +92,7 @@ The name of the class as a dependency.
 
 > **wantArray**: `boolean`
 
-Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:30](https://github.com/exteditor/ghostbird/blob/ac51a24b1e01c857bb0608c7bc14825c2f36fc86/src/root/util/wire.ts#L30)
+Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:30](https://github.com/exteditor/ghostbird/blob/a08389d8cd1aeb7db7e822d763f0066efa11400a/src/root/util/wire.ts#L30)
 
 Specifies whether this class requires dependencies as arrays. Useful for composites or aggregates.
 If `true`, each argument to the constructor will be an array of instances.

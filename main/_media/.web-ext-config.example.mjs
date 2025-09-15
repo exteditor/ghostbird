@@ -7,5 +7,6 @@ export default {
     firefox: "/usr/bin/thunderbird",
     firefoxProfile: "/home/your/.config/your-testing-thunderbird-profile",
     profileCreateIfMissing: true,
+    // keepProfileChanges: true,
   },
 };

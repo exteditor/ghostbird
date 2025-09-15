@@ -18,7 +18,7 @@
  */
 
 import { existsSync } from "node:fs"
-import { dirname, resolve } from "node:path"
+import { dirname, join, resolve } from "node:path"
 import { env } from "node:process"
 import type { Options, UserConfig } from "tsdown"
 import { barrelsby } from "./barrelsby"
@@ -33,23 +33,19 @@ export default (): UserConfig => {
   ]
 }
 
-const isRelease = env.CI === "true"
+const isRelease = env.CI === "true" || existsSync(join(__dirname, "..", "ext", "manifest.json"))
 
 const commonConfig = {
   outDir: "dist/ext/",
   tsconfig: "src/root/tsconfig.json",
   ignoreWatch: [/[/](?:[.]|build[/]|dist[/])/i, /index[.]ts$/i],
   platform: "browser",
-  // Corresponds to Thunderbird 128 ESR
-  target: "firefox128",
+  // Corresponds to Thunderbird 140 ESR
+  target: "firefox140",
   sourcemap: true,
   // We don't remove whitespaces for people like me who enjoy unpacking xpis and reading the content.
   // We still bundle because it reduces the number of files to check.
-  minify: {
-    compress: false,
-    mangle: false,
-    removeWhitespace: false,
-  },
+  minify: "dce-only",
   define: {
     // Remove in-source tests
     "import.meta.vitest": "undefined",

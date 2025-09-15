@@ -51,7 +51,7 @@ Basically `yarn && yarn build`. See [CONTRIBUTING.md](documents/CONTRIBUTING.md)
 
 1. Launch your favorite text editor.
 2. Start GhostText server in your text editor (e.g. with `:GhostTextStart` in Vim).
-3. Press the gray Ghostbird button <img src="_media/gray.svg" width="24" height="24" border="1"> in the Thunderbird mail compose window. (The default shortcut is `Ctrl-E`)
+3. Press the gray Ghostbird button <img src="_media/gray.svg" width="24" height="24" border="1"> in the Thunderbird mail compose window. (The default shortcut is <kbd>Ctrl</kbd>+<kbd>E</kbd>)
    * If the connection is successful, the button will turn blue <img src="_media/blue.svg" width="24" height="24" border="1">.
    * If the connection fails, the button will turn red <img src="_media/red.svg" width="24" height="24" border="1">. Make sure that the GhostText server is listening. See [Troubleshooting page of original GhostText](https://ghosttext.fregante.com/troubleshooting/#unable-to-connect).
 4. Write your email in the text editor.
@@ -161,8 +161,8 @@ If you liked the idea, please:
 We need help with:
 
 * [Website](https://exteditor.github.io/ghostbird/) and materials (Please post [screenshots to the wiki](https://github.com/exteditor/ghostbird/wiki/Screenshots))
-* [Testing with various text editors](https://github.com/exteditor/ghostbird/wiki/Text_editors_known_to_work_with)
-* [Testing with various OSes](https://github.com/exteditor/ghostbird/wiki/OSes_known_to_work_with)
+* [Testing with various text editors](https://github.com/exteditor/ghostbird/wiki/TextEditorsKnownToWorkWith)
+* [Testing with various OSes](https://github.com/exteditor/ghostbird/wiki/OSesKnownToWorkWith)
 * Wiki pages for [user guides](https://github.com/exteditor/ghostbird/wiki/HowTo) and [troubleshooting](https://github.com/exteditor/ghostbird/wiki/Troubleshooting)
 * Developing the server counterpart so that this can be used as an External Editor replacement ([GhostText-Any](https://github.com/newsch/GhostText-Any/) or [Helix-Ghost][helix] can be a good starting point)
 * Creating a testing checklist for testing and debugging ([This page](https://github.com/exteditor/exteditor/wiki/Things-to-test) can be a good starting point)
