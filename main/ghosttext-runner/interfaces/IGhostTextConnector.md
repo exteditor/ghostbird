@@ -14,7 +14,7 @@ Does GhostText handshake
 
 ### connect()
 
-> **connect**(`serverUrl`): `Promise`\<\[[`ISession`](ISession.md), [`ServerInitialResponse`](../../ghosttext-session/interfaces/ServerInitialResponse.md)\]\>
+> **connect**(`serverUrl`): `Promise`\<\[[`ISession`](ISession.md), [`ServerInitialResponse`](../../ghosttext-session/type-aliases/ServerInitialResponse.md)\]\>
 
 Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/api.d.ts:17
 
@@ -30,6 +30,6 @@ The URL of GhostText server to initial GET
 
 #### Returns
 
-`Promise`\<\[[`ISession`](ISession.md), [`ServerInitialResponse`](../../ghosttext-session/interfaces/ServerInitialResponse.md)\]\>
+`Promise`\<\[[`ISession`](ISession.md), [`ServerInitialResponse`](../../ghosttext-session/type-aliases/ServerInitialResponse.md)\]\>
 
 the connection and the initial response

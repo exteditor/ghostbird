@@ -19,5 +19,6 @@
 ## Type Aliases
 
 - [ComposeDetails](type-aliases/ComposeDetails.md)
+- [IGhostClientPort](type-aliases/IGhostClientPort.md)
 - [IGhostServerPort](type-aliases/IGhostServerPort.md)
 - [SettableComposeDetails](type-aliases/SettableComposeDetails.md)

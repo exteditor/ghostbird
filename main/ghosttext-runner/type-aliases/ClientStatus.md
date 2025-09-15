@@ -8,7 +8,7 @@
 
 > **ClientStatus** = `"active"` \| `"inactive"` \| `"error"`
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/api.d.ts:74
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/api.d.ts:75
 
 Status of the connection
 - `inactive`: Not connected or starting

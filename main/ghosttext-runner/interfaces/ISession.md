@@ -28,7 +28,7 @@ Closes the WebSocket
 
 ### popServerChange()
 
-> **popServerChange**(): `undefined` \| [`EditorChangeResponse`](../../ghosttext-session/interfaces/EditorChangeResponse.md)
+> **popServerChange**(): `undefined` \| [`EditorChangeResponse`](../../ghosttext-session/type-aliases/EditorChangeResponse.md)
 
 Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/api.d.ts:35
 
@@ -36,7 +36,7 @@ Get the most recent change and drop the rest
 
 #### Returns
 
-`undefined` \| [`EditorChangeResponse`](../../ghosttext-session/interfaces/EditorChangeResponse.md)
+`undefined` \| [`EditorChangeResponse`](../../ghosttext-session/type-aliases/EditorChangeResponse.md)
 
 The latest change object, or `undefined` if no new changes are available
 
@@ -54,7 +54,7 @@ Send local change to the server
 
 ##### update
 
-[`UpdateRequest`](../../ghosttext-session/interfaces/UpdateRequest.md)
+[`UpdateRequest`](../../ghosttext-session/type-aliases/UpdateRequest.md)
 
 The update request object to send.
 

@@ -6,7 +6,7 @@
 
 # Interface: IComposeWindow
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:36
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:31
 
 an utility to interact with a mail compose window
 
@@ -16,7 +16,7 @@ an utility to interact with a mail compose window
 
 > `readonly` **tabId**: `number`
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:38
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:33
 
 Practically ID of the compose window
 
@@ -26,7 +26,7 @@ Practically ID of the compose window
 
 > **getDetails**(): `PromiseLike`\<[`ComposeDetails`](../type-aliases/ComposeDetails.md)\>
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:45
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:40
 
 #### Returns
 
@@ -40,7 +40,7 @@ Values of input fields
 
 > **openPort**(): [`IGhostServerPort`](../type-aliases/IGhostServerPort.md)
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:55
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:50
 
 #### Returns
 
@@ -54,7 +54,7 @@ a connected port from the background script to the content script
 
 > **prepareContentScript**(): `PromiseLike`\<`boolean`\>
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:43
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:38
 
 Injects `compose.js` if it hasn't been injected yet
 
@@ -70,7 +70,7 @@ resolves to `true` if the script was injected, or `false` if it was already pres
 
 > **setDetails**(`details`): `PromiseLike`\<`void`\>
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:51
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:46
 
 Updates the input fields
 
@@ -94,7 +94,7 @@ resolves after the update
 
 > **setIcon**(`imageFilePath`): `Promise`\<`void`\>
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:61
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:56
 
 Updates the toolbar icon
 

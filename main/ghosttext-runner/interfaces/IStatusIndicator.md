@@ -6,7 +6,7 @@
 
 # Interface: IStatusIndicator
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/api.d.ts:76
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/api.d.ts:77
 
 Some UI to indicate status
 
@@ -16,7 +16,7 @@ Some UI to indicate status
 
 > **update**(`status`): `Promise`\<`void`\>
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/api.d.ts:82
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/api.d.ts:83
 
 Shows status to user
 

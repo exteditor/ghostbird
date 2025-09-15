@@ -14,32 +14,16 @@ data sent through tabs
 
 ## Properties
 
-### ping
+### other
 
-> **ping**: `"pong"`
-
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/message.d.ts:3
-
-***
-
-### start
-
-> **start**: `"ok"`
+> **other**: `"ok"`
 
 Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/message.d.ts:4
 
 ***
 
-### stop
+### ping
 
-> **stop**: `"ok"`
+> **ping**: `"pong"`
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/message.d.ts:5
-
-***
-
-### toggle
-
-> **toggle**: `"ok"`
-
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/message.d.ts:6
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/message.d.ts:3

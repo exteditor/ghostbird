@@ -52,7 +52,7 @@ Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/ghost\_text\_co
 
 ### connect()
 
-> **connect**(`serverUrl`): `Promise`\<\[[`ISession`](../../ghosttext-runner/interfaces/ISession.md), [`ServerInitialResponse`](../../ghosttext-session/interfaces/ServerInitialResponse.md)\]\>
+> **connect**(`serverUrl`): `Promise`\<\[[`ISession`](../../ghosttext-runner/interfaces/ISession.md), [`ServerInitialResponse`](../../ghosttext-session/type-aliases/ServerInitialResponse.md)\]\>
 
 Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/ghost\_text\_connector.d.ts:8
 
@@ -68,7 +68,7 @@ The URL of GhostText server to initial GET
 
 #### Returns
 
-`Promise`\<\[[`ISession`](../../ghosttext-runner/interfaces/ISession.md), [`ServerInitialResponse`](../../ghosttext-session/interfaces/ServerInitialResponse.md)\]\>
+`Promise`\<\[[`ISession`](../../ghosttext-runner/interfaces/ISession.md), [`ServerInitialResponse`](../../ghosttext-session/type-aliases/ServerInitialResponse.md)\]\>
 
 the connection and the initial response
 

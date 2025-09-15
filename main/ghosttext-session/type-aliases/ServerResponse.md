@@ -6,7 +6,7 @@
 
 # Type Alias: ServerResponse
 
-> **ServerResponse** = [`ServerInitialResponse`](../interfaces/ServerInitialResponse.md) \| [`EditorChangeResponse`](../interfaces/EditorChangeResponse.md)
+> **ServerResponse** = [`ServerInitialResponse`](ServerInitialResponse.md) \| [`EditorChangeResponse`](EditorChangeResponse.md)
 
 Defined in: work/ghostbird/ghostbird/build/src/ghosttext-session/types.d.ts:4
 

@@ -24,7 +24,7 @@ Applies changes received from the GhostText server to the compose window
 
 ##### change
 
-[`EditorChangeResponse`](../../ghosttext-session/interfaces/EditorChangeResponse.md)
+[`BodyState`](../../ghosttext-session/type-aliases/BodyState.md)
 
 The change from the server
 
@@ -38,13 +38,13 @@ resolves when updated, or rejects if the editor has been closed
 
 ### getState()
 
-> **getState**(): `Promise`\<[`IEditorState`](../../ghosttext-session/interfaces/IEditorState.md)\>
+> **getState**(): `Promise`\<[`EmailState`](../../ghosttext-session/type-aliases/EmailState.md)\>
 
 Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/api.d.ts:50
 
 #### Returns
 
-`Promise`\<[`IEditorState`](../../ghosttext-session/interfaces/IEditorState.md)\>
+`Promise`\<[`EmailState`](../../ghosttext-session/type-aliases/EmailState.md)\>
 
 complete current state of the editor
 
@@ -52,7 +52,7 @@ complete current state of the editor
 
 ### popLastEdit()
 
-> **popLastEdit**(): `undefined` \| `Partial`\<[`IEditorState`](../../ghosttext-session/interfaces/IEditorState.md)\>
+> **popLastEdit**(): `undefined` \| [`InternalEdit`](../../ghosttext-session/type-aliases/InternalEdit.md)
 
 Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/api.d.ts:66
 
@@ -60,7 +60,7 @@ Get the most recent edit and drop the rest
 
 #### Returns
 
-`undefined` \| `Partial`\<[`IEditorState`](../../ghosttext-session/interfaces/IEditorState.md)\>
+`undefined` \| [`InternalEdit`](../../ghosttext-session/type-aliases/InternalEdit.md)
 
 recent edit or `undefined` if no new edits have occurred
 

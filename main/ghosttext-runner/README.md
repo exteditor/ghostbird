@@ -25,3 +25,15 @@
 ## Type Aliases
 
 - [ClientStatus](type-aliases/ClientStatus.md)
+
+## References
+
+### ExternalEdit
+
+Re-exports [ExternalEdit](../ghosttext-session/type-aliases/ExternalEdit.md)
+
+***
+
+### InternalEdit
+
+Re-exports [InternalEdit](../ghosttext-session/type-aliases/InternalEdit.md)

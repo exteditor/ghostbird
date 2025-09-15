@@ -13,4 +13,9 @@
 ## Type Aliases
 
 - [IBackgroundMessenger](type-aliases/IBackgroundMessenger.md)
-- [IGhostClientPort](type-aliases/IGhostClientPort.md)
+
+## References
+
+### IGhostClientPort
+
+Re-exports [IGhostClientPort](../ghosttext-adaptor/type-aliases/IGhostClientPort.md)

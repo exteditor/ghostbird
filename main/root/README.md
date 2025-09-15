@@ -28,6 +28,7 @@
 
 - [backgroundWire](functions/backgroundWire.md)
 - [makeRegistry](functions/makeRegistry.md)
+- [makeRegistryWithBody](functions/makeRegistryWithBody.md)
 - [prepareBackgroundRouter](functions/prepareBackgroundRouter.md)
 - [startup](functions/startup.md)
 - [wire](functions/wire.md)

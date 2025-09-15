@@ -8,7 +8,7 @@
 
 > **ComposeDetails** = `object`
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:19
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:18
 
 content of a mail compose window
 
@@ -18,7 +18,7 @@ content of a mail compose window
 
 > **body**: `string`
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:25
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:24
 
 The body content of the email.
 
@@ -28,7 +28,7 @@ The body content of the email.
 
 > **isPlainText**: `boolean`
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:21
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:20
 
 Whether the compose window is in plain text mode.
 
@@ -38,6 +38,6 @@ Whether the compose window is in plain text mode.
 
 > **subject**: `string`
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:23
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:22
 
 The subject line of the email.

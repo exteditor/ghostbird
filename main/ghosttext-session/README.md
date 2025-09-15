@@ -10,18 +10,18 @@
 
 - [GhostTextClient](classes/GhostTextClient.md)
 
-## Interfaces
-
-- [EditorChangeResponse](interfaces/EditorChangeResponse.md)
-- [IEditorState](interfaces/IEditorState.md)
-- [SelectionObject](interfaces/SelectionObject.md)
-- [ServerInitialResponse](interfaces/ServerInitialResponse.md)
-- [UpdateRequest](interfaces/UpdateRequest.md)
-
 ## Type Aliases
 
+- [BodyState](type-aliases/BodyState.md)
 - [ClientRequest](type-aliases/ClientRequest.md)
 - [Command](type-aliases/Command.md)
 - [CommandResult](type-aliases/CommandResult.md)
+- [EditorChangeResponse](type-aliases/EditorChangeResponse.md)
+- [EmailState](type-aliases/EmailState.md)
+- [ExternalEdit](type-aliases/ExternalEdit.md)
+- [InternalEdit](type-aliases/InternalEdit.md)
+- [SelectionObject](type-aliases/SelectionObject.md)
+- [ServerInitialResponse](type-aliases/ServerInitialResponse.md)
 - [ServerResponse](type-aliases/ServerResponse.md)
 - [SessionStatus](type-aliases/SessionStatus.md)
+- [UpdateRequest](type-aliases/UpdateRequest.md)

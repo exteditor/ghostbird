@@ -24,7 +24,8 @@ This is how user actions are handled:
     * ~~When the text is changed in the compose window, `compose` sends the update to `background`, which relays it to the server, which updates the text editor.~~ (Not until v2.0.0)
 1. The WebSocket connection remains open until one of the following happens:
     * a) When the server closes the WebSocket connection, which `background` detects and notifies `compose`.
-    * b) When the compose window is closed, `compose` closes the `Port`, which `background` detects and closes the WebSocket connection.
+    * b) When the shortcut key assigned to the close function is pressed, `compose` closes the `Port`, which `background` detects and closes the WebSocket connection.
+    * c) When the compose window is closed, `compose` closes the `Port`, handled as the same as (b).
 1. The compose window returns to its normal state and the button is toggled off.
 
 ### The options page
@@ -87,11 +88,8 @@ loop
       B->>C: Close the port
     end
   else
-    break When the Ghostbird button has been clicked again
-      B->>B: User clicks the Ghostbird button
-      B->>C: Request a graceful close
-      C->>B: Send Last update
-      B->>S: Send Last update
+    break When the close shortcut key is pressed
+      B->>B: User types the shortcut key
       B->>C: Close the port
       B->>S: Close the WebSocket
     end

@@ -12,11 +12,15 @@ Defined in: work/ghostbird/ghostbird/build/src/app-compose/compose\_event\_route
 
 ### Constructor
 
-> **new ComposeEventRouter**(`backgroundMessenger`): `ComposeEventRouter`
+> **new ComposeEventRouter**(`body`, `backgroundMessenger`): `ComposeEventRouter`
 
-Defined in: work/ghostbird/ghostbird/build/src/app-compose/compose\_event\_router.d.ts:6
+Defined in: work/ghostbird/ghostbird/build/src/app-compose/compose\_event\_router.d.ts:7
 
 #### Parameters
+
+##### body
+
+`HTMLBodyElement`
 
 ##### backgroundMessenger
 
@@ -32,6 +36,14 @@ Defined in: work/ghostbird/ghostbird/build/src/app-compose/compose\_event\_route
 
 > `readonly` **backgroundMessenger**: [`IBackgroundMessenger`](../type-aliases/IBackgroundMessenger.md)
 
+Defined in: work/ghostbird/ghostbird/build/src/app-compose/compose\_event\_router.d.ts:5
+
+***
+
+### body
+
+> `readonly` **body**: `HTMLBodyElement`
+
 Defined in: work/ghostbird/ghostbird/build/src/app-compose/compose\_event\_router.d.ts:4
 
 ***
@@ -40,7 +52,7 @@ Defined in: work/ghostbird/ghostbird/build/src/app-compose/compose\_event\_route
 
 > `static` **isSingleton**: `boolean`
 
-Defined in: work/ghostbird/ghostbird/build/src/app-compose/compose\_event\_router.d.ts:5
+Defined in: work/ghostbird/ghostbird/build/src/app-compose/compose\_event\_router.d.ts:6
 
 ## Methods
 
@@ -48,13 +60,13 @@ Defined in: work/ghostbird/ghostbird/build/src/app-compose/compose\_event\_route
 
 > **handleConnect**(`port`): `Promise`\<`void`\>
 
-Defined in: work/ghostbird/ghostbird/build/src/app-compose/compose\_event\_router.d.ts:7
+Defined in: work/ghostbird/ghostbird/build/src/app-compose/compose\_event\_router.d.ts:8
 
 #### Parameters
 
 ##### port
 
-[`IGhostClientPort`](../type-aliases/IGhostClientPort.md)
+[`IGhostClientPort`](../../ghosttext-adaptor/type-aliases/IGhostClientPort.md)
 
 #### Returns
 
@@ -66,7 +78,7 @@ Defined in: work/ghostbird/ghostbird/build/src/app-compose/compose\_event\_route
 
 > **handleMessage**(`message`): `"ok"` \| `"pong"`
 
-Defined in: work/ghostbird/ghostbird/build/src/app-compose/compose\_event\_router.d.ts:8
+Defined in: work/ghostbird/ghostbird/build/src/app-compose/compose\_event\_router.d.ts:9
 
 #### Parameters
 

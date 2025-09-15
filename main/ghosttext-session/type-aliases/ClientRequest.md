@@ -6,6 +6,6 @@
 
 # Type Alias: ClientRequest
 
-> **ClientRequest** = [`UpdateRequest`](../interfaces/UpdateRequest.md)
+> **ClientRequest** = [`UpdateRequest`](UpdateRequest.md)
 
 Defined in: work/ghostbird/ghostbird/build/src/ghosttext-session/types.d.ts:5

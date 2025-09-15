@@ -4,7 +4,9 @@
 
 [@exteditor/ghostbird](../../modules.md) / [ghosttext-session](../README.md) / SelectionObject
 
-# Interface: SelectionObject
+# Type Alias: SelectionObject
+
+> **SelectionObject** = `object`
 
 Defined in: work/ghostbird/ghostbird/build/src/ghosttext-session/types.d.ts:18
 

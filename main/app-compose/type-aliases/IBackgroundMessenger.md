@@ -8,6 +8,6 @@
 
 > **IBackgroundMessenger** = [`IMessenger`](../../ghosttext-runner/interfaces/IMessenger.md)\<\{ `ping`: `"pong"`; \}\>
 
-Defined in: work/ghostbird/ghostbird/build/src/app-compose/api.d.ts:6
+Defined in: work/ghostbird/ghostbird/build/src/app-compose/api.d.ts:4
 
 Can send one-off messages to background

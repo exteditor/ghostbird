@@ -6,7 +6,7 @@
 
 # Interface: IMessagePort\<TRequest, TResponse\>
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/message.d.ts:24
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/message.d.ts:22
 
 A full-duplex buffered message channel.
 
@@ -30,7 +30,7 @@ The type of messages which this port can receive
 
 > **clearReceived**(): `undefined` \| `TResponse`
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/message.d.ts:43
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/message.d.ts:41
 
 Clears the buffer and returns the latest message.
 
@@ -46,7 +46,7 @@ the latest message, or `undefined` if not available
 
 > **close**(): `void`
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/message.d.ts:53
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/message.d.ts:51
 
 Closes the port.
 
@@ -60,7 +60,7 @@ Closes the port.
 
 > **dequeueReceived**(): `undefined` \| `TResponse`
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/message.d.ts:38
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/message.d.ts:36
 
 dequeues the earliest message.
 
@@ -76,7 +76,7 @@ the dequeued message, or `undefined` if not available
 
 > **isOpen**(): `boolean`
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/message.d.ts:28
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/message.d.ts:26
 
 #### Returns
 
@@ -90,7 +90,7 @@ true if the port is still open, false if already closed
 
 > **send**(`msg`): `void`
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/message.d.ts:49
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/message.d.ts:47
 
 Queues a message to be sent.
 
@@ -116,7 +116,7 @@ Already disconnected
 
 > **waitReady**(): `Promise`\<`void`\>
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/message.d.ts:33
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/message.d.ts:31
 
 Wait for the next incoming message.
 

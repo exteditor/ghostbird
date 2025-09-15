@@ -6,7 +6,7 @@
 
 # Interface: IMessenger\<TCatalog\>
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/message.d.ts:12
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/message.d.ts:10
 
 A messaging channel that returns responses.
 
@@ -24,7 +24,7 @@ The record type that maps types of sending messages to respective expected respo
 
 > **send**\<`TType`\>(`msg`): `Promise`\<`TCatalog`\[`TType`\]\>
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/message.d.ts:17
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-runner/message.d.ts:15
 
 Sends a message to the other end.
 

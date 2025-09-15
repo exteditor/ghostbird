@@ -4,7 +4,9 @@
 
 [@exteditor/ghostbird](../../modules.md) / [ghosttext-session](../README.md) / UpdateRequest
 
-# Interface: UpdateRequest
+# Type Alias: UpdateRequest
+
+> **UpdateRequest** = `object`
 
 Defined in: work/ghostbird/ghostbird/build/src/ghosttext-session/types.d.ts:27
 
@@ -14,7 +16,7 @@ Message sent from the client to the server when the user makes a change in the b
 
 ### selections
 
-> **selections**: readonly [`SelectionObject`](SelectionObject.md)[]
+> **selections**: `ReadonlyArray`\<[`SelectionObject`](SelectionObject.md)\>
 
 Defined in: work/ghostbird/ghostbird/build/src/ghosttext-session/types.d.ts:37
 

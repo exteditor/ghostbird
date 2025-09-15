@@ -6,6 +6,8 @@
 
 # Type Alias: IGhostServerPort
 
-> **IGhostServerPort** = [`IMessagePort`](../../ghosttext-runner/interfaces/IMessagePort.md)\<[`EditorChangeResponse`](../../ghosttext-session/interfaces/EditorChangeResponse.md), `Partial`\<[`IEditorState`](../../ghosttext-session/interfaces/IEditorState.md)\>\>
+> **IGhostServerPort** = [`IMessagePort`](../../ghosttext-runner/interfaces/IMessagePort.md)\<[`ExternalEdit`](../../ghosttext-session/type-aliases/ExternalEdit.md), [`InternalEdit`](../../ghosttext-session/type-aliases/InternalEdit.md)\>
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:63
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:61
+
+Connection to the content script

@@ -4,7 +4,9 @@
 
 [@exteditor/ghostbird](../../modules.md) / [ghosttext-session](../README.md) / EditorChangeResponse
 
-# Interface: EditorChangeResponse
+# Type Alias: EditorChangeResponse
+
+> **EditorChangeResponse** = `object`
 
 Defined in: work/ghostbird/ghostbird/build/src/ghosttext-session/types.d.ts:43
 
@@ -15,7 +17,7 @@ At least one property has to be sent.
 
 ### selections?
 
-> `optional` **selections**: readonly [`SelectionObject`](SelectionObject.md)[]
+> `optional` **selections**: `ReadonlyArray`\<[`SelectionObject`](SelectionObject.md)\>
 
 Defined in: work/ghostbird/ghostbird/build/src/ghosttext-session/types.d.ts:47
 

@@ -15,7 +15,6 @@
 - [ComposeTabDetector](classes/ComposeTabDetector.md)
 - [PromisifiedPort](classes/PromisifiedPort.md)
 - [PromisifiedWebSocket](classes/PromisifiedWebSocket.md)
-- [PromisifyingQueue](classes/PromisifyingQueue.md)
 - [WebClient](classes/WebClient.md)
 
 ## Interfaces

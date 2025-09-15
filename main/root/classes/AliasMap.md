@@ -6,7 +6,7 @@
 
 # Class: AliasMap\<TCatalog\>
 
-Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:121](https://github.com/exteditor/ghostbird/blob/67d3c91a05b6bd66bf135feb30eaaaacf143a9e0/src/root/util/wire.ts#L121)
+Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:121](https://github.com/exteditor/ghostbird/blob/ac51a24b1e01c857bb0608c7bc14825c2f36fc86/src/root/util/wire.ts#L121)
 
 Collects and handles duplicate aliases
 
@@ -22,7 +22,7 @@ Collects and handles duplicate aliases
 
 > **new AliasMap**\<`TCatalog`\>(`map`, `duplicateWanted`, `nameForDuplicatesOf`): `AliasMap`\<`TCatalog`\>
 
-Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:122](https://github.com/exteditor/ghostbird/blob/67d3c91a05b6bd66bf135feb30eaaaacf143a9e0/src/root/util/wire.ts#L122)
+Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:122](https://github.com/exteditor/ghostbird/blob/ac51a24b1e01c857bb0608c7bc14825c2f36fc86/src/root/util/wire.ts#L122)
 
 #### Parameters
 
@@ -48,7 +48,7 @@ Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:122](https://github.
 
 > **collectAliases**(`__namedParameters`): `void`
 
-Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:131](https://github.com/exteditor/ghostbird/blob/67d3c91a05b6bd66bf135feb30eaaaacf143a9e0/src/root/util/wire.ts#L131)
+Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:131](https://github.com/exteditor/ghostbird/blob/ac51a24b1e01c857bb0608c7bc14825c2f36fc86/src/root/util/wire.ts#L131)
 
 Classes may have duplicate aliases, so we collect them first to register later
 
@@ -68,7 +68,7 @@ Classes may have duplicate aliases, so we collect them first to register later
 
 > **makeAliasEntries**(): `Generator`\<\[`string`, [`ResolveQuery`](../type-aliases/ResolveQuery.md)\<`TCatalog`, `unknown`\>\]\>
 
-Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:151](https://github.com/exteditor/ghostbird/blob/67d3c91a05b6bd66bf135feb30eaaaacf143a9e0/src/root/util/wire.ts#L151)
+Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:151](https://github.com/exteditor/ghostbird/blob/ac51a24b1e01c857bb0608c7bc14825c2f36fc86/src/root/util/wire.ts#L151)
 
 Builds entries to add to the IRegistry from collected aliases
 

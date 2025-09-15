@@ -4,7 +4,9 @@
 
 [@exteditor/ghostbird](../../modules.md) / [ghosttext-session](../README.md) / ServerInitialResponse
 
-# Interface: ServerInitialResponse
+# Type Alias: ServerInitialResponse
+
+> **ServerInitialResponse** = `object`
 
 Defined in: work/ghostbird/ghostbird/build/src/ghosttext-session/types.d.ts:9
 

@@ -6,7 +6,7 @@
 
 # Interface: IWebClient
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:4
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:3
 
 Wrapper for `fetch` and `WebSocket`
 
@@ -16,7 +16,7 @@ Wrapper for `fetch` and `WebSocket`
 
 > **getJson**(`serverUrl`): `PromiseLike`\<`object`\>
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:10
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:9
 
 Does fetch and parse json
 
@@ -40,7 +40,7 @@ resolves to the JSON response
 
 > **openWebSocket**(`wsUrl`): `PromiseLike`\<[`IMessagePort`](../../ghosttext-runner/interfaces/IMessagePort.md)\<`string`, `string`\>\>
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:16
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:15
 
 Open WebSocket connection
 

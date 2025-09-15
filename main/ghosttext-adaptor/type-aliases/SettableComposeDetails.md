@@ -6,8 +6,16 @@
 
 # Type Alias: SettableComposeDetails
 
-> **SettableComposeDetails** = \{ `body?`: `string`; `subject`: `string`; \} \| \{ `body`: `string`; `subject?`: `string`; \}
+> **SettableComposeDetails** = `object`
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:28
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:27
 
 Updatable fields of a compose window
+
+## Properties
+
+### subject
+
+> **subject**: `string`
+
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:28

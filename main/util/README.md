@@ -9,6 +9,7 @@
 ## Classes
 
 - [CaseFoldingMap](classes/CaseFoldingMap.md)
+- [PromisifyingQueue](classes/PromisifyingQueue.md)
 
 ## Functions
 
