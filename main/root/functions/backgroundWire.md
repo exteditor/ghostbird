@@ -6,36 +6,10 @@
 
 # Function: backgroundWire()
 
-> **backgroundWire**\<`TRoot`\>(): \<`TCtor`\>(`ctor`, `deps?`) => [`Resolved`](../type-aliases/Resolved.md)\<`TRoot` & `object`, `TCtor`\>
+> **backgroundWire**(): [`Startup`](../type-aliases/Startup.md)\<`Root`\>
 
-Defined in: [work/ghostbird/ghostbird/src/root/background\_wire.ts:24](https://github.com/exteditor/ghostbird/blob/a08389d8cd1aeb7db7e822d763f0066efa11400a/src/root/background_wire.ts#L24)
-
-## Type Parameters
-
-### TRoot
-
-`TRoot`
+Defined in: [work/ghostbird/ghostbird/src/root/background\_wire.ts:24](https://github.com/exteditor/ghostbird/blob/d0b443ff33fee4a1f225c01e360a67c08b1db9ee/src/root/background_wire.ts#L24)
 
 ## Returns
 
-> \<`TCtor`\>(`ctor`, `deps?`): [`Resolved`](../type-aliases/Resolved.md)\<`TRoot` & `object`, `TCtor`\>
-
-### Type Parameters
-
-#### TCtor
-
-`TCtor`
-
-### Parameters
-
-#### ctor
-
-`TCtor`
-
-#### deps?
-
-`Iterable`\<`"messenger"` \| `string` & keyof `TRoot`, `any`, `any`\>
-
-### Returns
-
-[`Resolved`](../type-aliases/Resolved.md)\<`TRoot` & `object`, `TCtor`\>
+[`Startup`](../type-aliases/Startup.md)\<`Root`\>

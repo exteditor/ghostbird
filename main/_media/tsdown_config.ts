@@ -33,8 +33,9 @@ export default (): UserConfig => {
   ]
 }
 
-const isRelease = env.CI === "true" || existsSync(join(__dirname, "..", "ext", "manifest.json"))
+const isRelease: boolean = env.CI === "true" || existsSync(join(__dirname, "..", "ext", "manifest.json"))
 
+// biome-ignore lint/nursery/useExplicitType: we want tsc to infer it
 const commonConfig = {
   outDir: "dist/ext/",
   tsconfig: "src/root/tsconfig.json",
@@ -55,6 +56,7 @@ const commonConfig = {
   },
 } satisfies Options
 
+// biome-ignore lint/nursery/useExplicitType: we want tsc to infer it
 const esmConfig = {
   name: "ext",
   entry: [
@@ -79,6 +81,7 @@ const esmConfig = {
   ],
 } satisfies Options
 
+// biome-ignore lint/nursery/useExplicitType: we want tsc to infer it
 const iifeConfig = {
   name: "compose",
   entry: [

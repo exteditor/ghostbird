@@ -8,7 +8,7 @@
 
 ### What is Ghostbird?
 
-* [Ghostbird](https://github.com/exteditor/ghostbird/) is a Thunderbird add-on that allows you to edit email text in your favorite text editor.
+* [Ghostbird](https://github.com/exteditor/ghostbird/) is a Thunderbird add-on that allows you to edit emails in your favorite text editor.
 * Original [GhostText][gt] is an add-on for browsers that lets you edit textboxes on the webpage using your favorite text editor.
 * Both work by connecting to a GhostText server, which is listening on port 4001 (the default), via [WebSocket](https://en.wikipedia.org/wiki/WebSocket) and relaying text between the compose window and the text editor.
 
@@ -21,12 +21,12 @@
 ### Which Thunderbird versions are supported?
 
 * Thunderbird 128+ (We will mainly support ESR)
-* Testing with newer versions is welcome. Please report if you noticed something in newer Thunderbird versions.
+* Testing with newer versions is welcomed. Please report any issues you notice in newer Thunderbird versions.
 
 ### What text editors are supported?
 
 * See [Requirements section in README.md](../../modules.md), but it isn't the official list. If your favorite editor isn't listed, try searching for it.
-* If you tried the add-on, please add your favorite text editor to [the wiki page](https://github.com/exteditor/ghostbird/wiki/TextEditorsKnownToWorkWith) if it's not there.
+* If you have tried the add-on, please add your favorite text editor to [the wiki page](https://github.com/exteditor/ghostbird/wiki/TextEditorsKnownToWorkWith) if it's not there.
 
 ### How do I install it?
 
@@ -46,19 +46,19 @@
 
 ### I found an issue. Where should I report it?
 
-* Try searching the GitHub pages like [discussion][discussion], [wiki][wiki], and [issue][issue] pages. Please post to the discussion or issue page if you find nothing.
+* Try searching the GitHub pages like [discussion][discussion], [wiki][wiki], and [issue][issue] pages. Please post to the [discussion][discussion] or [issue][issue] page if you don't find anything relevant.
 
-### How do I switch between HTML mode and Plain Text mode? {#mode}
+### How do I switch between HTML mode and Plain Text mode?<a name="mode"></a>
 
 > TL;DR: Set your preferred format in `Account Settings`>`Composition & Addressing`, then start a new message.
 
 * In recent versions of Thunderbird, editing mode can't be switched after you start writing an email.
-* Confusingly, editing mode is set at two places: profile-wide and per-account.
-  * You can set profile-wide option at `Setting`>`Composition`>`Sending Format` section. Choose one from `Automatic`, `Both HTML and Plain Text`, `Only HTML`, and `Only Plain Text`.
+* Confusingly, the configuration is split between profile-wide and per-account.
+  * The **sending format**, which you can set profile-wide at `Setting`>`Composition`>`Sending Format` section, is maybe not what you are looking for; it determines the email format that **your recipient** will see when they open your email, not the format you use to compose your email.
 
     <img width="400" height="194" title="profile-wide email format config" alt="profile-wide email format config" src="https://github.com/user-attachments/assets/cbbe7494-1cce-4da8-944f-f5b99d925de4" />
 
-  * You can set per-account option at `Account Setting`>`Composition & Addressing`>`Composition` section. Check or uncheck the `Compose messages in HTML format` checkbox.
+  * The **composing format**, which you can set at `Account Setting`>`Composition & Addressing`>`Composition` section, is maybe what you are looking for; it determines the format **you** will see while composing your email. Check or uncheck the `Compose messages in HTML format` checkbox.
 
     <img width="400" height="184" alt="per-account email format config" title="per-account email format config" src="https://github.com/user-attachments/assets/9305cec5-dc83-4893-8128-bdbaadaa9f6f" />
 
@@ -77,7 +77,7 @@
 * As for the icon, I'm planning to add an option to choose between icons so that you can switch them. Please upvote [the issue][chooseicon] if it bothers you.
 * New icons are welcome, of course, preferably in SVG.
 
-### Why not just fork the original GhostText add-on, or contribute to it? {#why}
+### Why not just fork the original GhostText add-on, or contribute to it?<a name="why"></a>
 
 * I have a specific requirement to extend [the GhostText protocol][protocol] on both the client and server sides, which would allow configuration made in the client UI to be sent to the server. I think the original add-on, which is supposed to be simple, is not suitable for that purpose.
 * Thunderbird-specific changes also seem hard to incorporate without complicating the code. For example, the concepts of a compose window and address lines do not exist in browsers.
@@ -93,12 +93,12 @@
 
 ### Why not use External Editor Revived as a base?
 
-(For those who don't know: [External Editor Revived by @Frederick888](https://github.com/Frederick888/external-editor-revived) is an add-on for Thunderbird that lets you edit email text in an external text editor, which works in recent Thunderbird versions and actively maintained)
+(For those who don't know: [External Editor Revived by @Frederick888](https://github.com/Frederick888/external-editor-revived) is an add-on for Thunderbird that lets you edit email text in an external text editor, which works in recent Thunderbird versions and is actively maintained)
 
-* I started working on Ghostbird while mostly offline. Had I known the existence of ERR, Ghostbird doesn't exist now!
+* I started working on Ghostbird while mostly offline. Had I known about ERR's existence, Ghostbird wouldn't exist now!
 * ERR works using [Native Messaging](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Native_messaging), which is the only way to launch external process in recent Thunderbird API. It requires a companion app to be installed and registered as a Native Messaging Host. See [ERR's Wiki pages](https://github.com/Frederick888/external-editor-revived/wiki) for details.
 * Reasons to continue developing Ghostbird? I think GhostText's live updating functionality is pretty (for now; there is no fundamental reason ERR can't do the same).
-* That said, I think you should try ERR before using still-in-alpha Ghostbird, as ERR is more mature and already on [AMO][revived].
+* That said, I think you should try ERR before using Ghostbird, which is still in alpha, as ERR is more mature and already on [AMO][revived].
 
   [![External Editor Revived](https://raw.githubusercontent.com/thunderbird/webext-support/refs/heads/master/images/get-the-addon.svg)][revived]
 
@@ -112,12 +112,12 @@
 
 ### Why Yarn?
 
-* I love cats and Yarn has [a cat logo](https://github.com/yarnpkg/assets).
+* I love cats, and Yarn has [a cat logo](https://github.com/yarnpkg/assets).
 
 ### Where are `index.ts`?
 
 * They are not checked into the repo and are generated by a tool.
-* Run `yarn index-ts` to generate them. An initial `yarn install` or `yarn build` also generates them.
+* Run `yarn index-ts` to generate them. Running `yarn install` or `yarn build` will also generate them.
 * [Barrelsby](https://github.com/bencoveney/barrelsby) performs the actual work. See [`tools/barrelsby.ts`](../../_media/barrelsby.ts).
 
 ### What are these `api.ts` files? They seem to only contain interfaces that aren't implemented.
@@ -149,5 +149,5 @@
 [startup]: ../../_media/startup.ts
 [protocol]: https://github.com/fregante/GhostText/blob/main/PROTOCOL.md
 [gt]: https://ghosttext.fregante.com/
-[chooseicon]: https://github.com/exteditor/ghostbird/issues/<placeholder>
+[chooseicon]: https://github.com/exteditor/ghostbird/issues/7
 [revived]: https://addons.thunderbird.net/en-US/thunderbird/addon/external-editor-revived/

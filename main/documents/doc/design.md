@@ -42,6 +42,61 @@ This is how user actions are handled:
 * We don't implement reconnecting the WebSocket connection when it is closed abnormally. The user has to click the Ghostbird button again to reconnect.
 * Initially, we don't support edits made in the compose window. We aim to support it in v2.0.0, but copying what the original GhostText add-on does might work well enough. We'll see.
 
+### Some diagram that's between a component diagram and a call graph
+
+The diagram below is an initial sketch, so class names may differ from the current codebase.
+
+```mermaid
+flowchart TD
+
+compose_dom[Compose<br>Window<br>DOM]@{shape: circle}
+ghost_server[GhostText<br>Server]@{shape: circle}
+thunderbird[Thunderbird]@{shape: circle}
+Port[runtime.Port]@{shape: das}
+websocket[WebSocket]@{shape: das}
+background[background.js<br>toplevel]@{shape: st-rect}
+bg_router[[BackgroundEventRouter]]
+connector[[GhostText<br>Connector]]
+email_editor[[EmailEditor]]
+compose_tab[compose.js<br>toplevel]@{shape: st-rect}
+composeeditor[[ComposeEditor]]
+gtclient[[GhostTextClient]]
+port_handler[[PortHandler]]
+compose_router[[ComposeEventRouter]]
+option[option.js<br>toplevel]@{shape: st-rect}
+option_tab[[OptionEventRouter]]
+options[Options]@{shape: bow-rect}
+option_holder[[OptionHolder]]
+notifier[[ComposeAction<br>Notifier]]
+
+subgraph "Options page"
+    option -->|Assign as a handler for various events| option_tab -.->|store| options
+end
+
+subgraph "Background Script"
+    background -->|Assign as a handler for various events| bg_router
+    bg_router -->|fwd onMessage| option_holder
+    bg_router -->|fwd onCommand| notifier --> gtclient --> email_editor
+    option_holder -.- gtclient
+    gtclient --> connector
+    websocket <--> connector
+end
+
+subgraph "Compose Window Script"
+    notecws@{ shape: tag-rect, label: "Multiple windows possible.<br>Distinguishable with tabId." }
+    email_editor --->|initialize<br>and kick| compose_tab
+    compose_tab -->|Assign as a handler for various events| compose_router
+    compose_router --> port_handler
+    port_handler --> composeeditor
+end
+
+composeeditor -..->|read/write| compose_dom
+ghost_server <-----> websocket
+thunderbird -- Open --> option
+thunderbird -- Load --> background
+connector <--> Port <--> port_handler
+```
+
 ### Sequence diagram
 
 Here's a sequence diagram showing interactions between `background.js`, `compose.js` and the GhostText server when the user clicks the Ghostbird button in the compose window.
@@ -124,7 +179,7 @@ end
 * [Barrelsby](https://github.com/bencoveney/barrelsby)  generates `index.ts`.
   * See [`tools/tsdown_config.ts`](../../_media/tsdown_config.ts).
 
-## Structure of the code {#structure}
+## Structure of the code<a name="structure"></a>
 
 The code loosely follows the [Ports and Adapters architecture](https://8thlight.com/insights/a-color-coded-guide-to-ports-and-adapters) and adheres to the [Dependency Inversion Principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle).
 * Interface implementations are preferred over class inheritance.

@@ -23,6 +23,7 @@
 - [ResolvableArgs](type-aliases/ResolvableArgs.md)
 - [Resolved](type-aliases/Resolved.md)
 - [ResolveQuery](type-aliases/ResolveQuery.md)
+- [Startup](type-aliases/Startup.md)
 
 ## Functions
 

@@ -13,8 +13,7 @@
 
 ### Instantiate automatically? Doesn't it make the code harder to follow?
 
-* See [di.md](./di.md) for some justifications.
-* It only automates the `new` calls. Constructors are still explicit about their dependencies.
+* Maybe, but it only automates the `new` calls. Constructors are still explicit about their dependencies.
 * You can still search for type names mentioned in constructor parameters.
 
 ### Isn't it a bit hacky to use `static` properties?
@@ -27,8 +26,8 @@
 
 ### How does automatic instantiation help with maintainability?
 
-* It makes coding less boring by automating a necessary coding task that occurs often: passing objects around to call their methods. I like to think of it as similar to generating a Makefile.
-* It nudges us to adhere to the [Dependency Inversion Principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle).
+* It makes coding less boring by automating a necessary coding task that occurs often: passing objects around to call their methods. This task gets harder as the software grows (which correlates to the number of hops required). I like to think of it as being similar to generating a Makefile.
+* It nudges us to adhere to the [Dependency Inversion Principle][dip].
 
 ### How does DIP help with maintainability?
 
@@ -38,15 +37,17 @@
 
 ### Dependency injection? Isn't DI over-engineered for a small project?
 
-* Maybe, but I intend to maintain this project for a while, and this was the best solution I could devise to adapt to breaking Thunderbird API changes, which seem to [happen every version][tbchanges].
-* I think DI may be over-engineered, but the DIP is still valuable.
+* Maybe, but I intend to maintain this project for a while, and this was the best solution I could devise to adapt to breaking Thunderbird API changes, which seem to [happen every few versions][tbchanges].
+* Also, adding DI after the fact tends to be very hard.
+* I think DI may be over-engineered, but [the DIP][dip] is still valuable.
 * We might drop the autowiring thing and instantiate manually with `new` if the project ends up being stable enough. The practice of initializing everything in `startup.ts` would [still be useful][ploeh], though. It's possible to drop autowiring without [giving up DIP][ploeh2].
 
 ### It looks like not using a dependency injection library. Why are you reinventing the wheel?
 
 * I tried some of those available on npm, but I couldn't find one that fits my taste.
-* Either way, its use [must be limited][ploeh] to [`root/startup.ts`][startup] (which is one of the requirements that some DI libraries fail to meet).
+* In any case, its use [must be limited][ploeh] to [`root/startup.ts`][startup] (which is one of the requirements that some DI libraries fail to meet).
 
+[dip]: https://en.wikipedia.org/wiki/Dependency_inversion_principle
 [tbchanges]: https://developer.thunderbird.net/add-ons/updating/tb128
 [ploeh]: https://blog.ploeh.dk/2019/06/17/composition-root-location/
 [ploeh2]: https://blog.ploeh.dk/2012/11/06/WhentouseaDIContainer/

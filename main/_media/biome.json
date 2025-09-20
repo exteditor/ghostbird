@@ -31,12 +31,24 @@
           }
         }
       },
+      "nursery": {
+        "useExplicitType": "error",
+        "noFloatingPromises": "error",
+        "noImportCycles": "error"
+      },
+      "suspicious": {
+        "noVar": "error"
+      },
       "style": {
         "useConst": "off",
         "noCommonJs": "error",
         "useNodejsImportProtocol": "error",
         "noDefaultExport": "error",
         "useBlockStatements": "error",
+        "useSingleVarDeclarator": "error",
+        "noInferrableTypes": "error",
+        "useNumberNamespace": "error",
+        "useAsConstAssertion": "error",
         "useNamingConvention": {
           "level": "warn",
           "options": {
