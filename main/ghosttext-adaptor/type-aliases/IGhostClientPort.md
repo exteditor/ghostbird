@@ -6,8 +6,8 @@
 
 # Type Alias: IGhostClientPort
 
-> **IGhostClientPort** = [`IMessagePort`](../../ghosttext-runner/interfaces/IMessagePort.md)\<[`InternalEdit`](../../ghosttext-session/type-aliases/InternalEdit.md), [`ExternalEdit`](../../ghosttext-session/type-aliases/ExternalEdit.md)\>
+> **IGhostClientPort** = [`IMessagePort`](../../ghosttext-runner/interfaces/IMessagePort.md)\<[`BodyState`](BodyState.md), [`BackgroundMessage`](BackgroundMessage.md)\>
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:59
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-adaptor/api.d.ts:69
 
 Connection to the background script, and the GhostText server behind it

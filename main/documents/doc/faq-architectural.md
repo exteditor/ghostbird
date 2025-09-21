@@ -26,7 +26,7 @@
 
 ### How does automatic instantiation help with maintainability?
 
-* It makes coding less boring by automating a necessary coding task that occurs often: passing objects around to call their methods. This task gets harder as the software grows (which correlates to the number of hops required). I like to think of it as being similar to generating a Makefile.
+* It makes coding less boring by automating a necessary coding task that occurs often: passing objects around to call their methods. I like to think of it as being similar to generating a Makefile. It's not a panacea, but I think it has some effect to extend lifespan of the code until it becomes unmaintainable due to the scale.
 * It nudges us to adhere to the [Dependency Inversion Principle][dip].
 
 ### How does DIP help with maintainability?
@@ -39,7 +39,6 @@
 
 * Maybe, but I intend to maintain this project for a while, and this was the best solution I could devise to adapt to breaking Thunderbird API changes, which seem to [happen every few versions][tbchanges].
 * Also, adding DI after the fact tends to be very hard.
-* I think DI may be over-engineered, but [the DIP][dip] is still valuable.
 * We might drop the autowiring thing and instantiate manually with `new` if the project ends up being stable enough. The practice of initializing everything in `startup.ts` would [still be useful][ploeh], though. It's possible to drop autowiring without [giving up DIP][ploeh2].
 
 ### It looks like not using a dependency injection library. Why are you reinventing the wheel?

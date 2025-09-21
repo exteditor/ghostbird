@@ -4,6 +4,7 @@
  * - Generating index.ts (./barrelsby)
  * - Type checking with tsc (./typecheck_with_tsc)
  * - Generating manifest.json (./generate_manifest)
+ * - Generating messages.json in _locales (./generate_locale_messages)
  * - Bundling and minifying
  * - Copying non-js files in ext/
  *
@@ -22,6 +23,7 @@ import { dirname, join, resolve } from "node:path"
 import { env } from "node:process"
 import type { Options, UserConfig } from "tsdown"
 import { barrelsby } from "./barrelsby"
+import { generateLocaleMessages } from "./generate_locale_messages"
 import { generateManifest } from "./generate_manifest"
 import { typecheckWithTsc } from "./typecheck_with_tsc"
 
@@ -78,6 +80,8 @@ const esmConfig = {
     typecheckWithTsc(),
     // Generate manifest.json
     generateManifest({ env: isRelease ? (env as Record<string, string>) : {} }),
+    // Generate _locales/*/messages.json
+    generateLocaleMessages({ path: "./locales.toml" }),
   ],
 } satisfies Options
 

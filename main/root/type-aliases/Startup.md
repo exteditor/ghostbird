@@ -6,9 +6,9 @@
 
 # Type Alias: Startup()\<TCatalog\>
 
-> **Startup**\<`TCatalog`\> = \<`TCtor`\>(`ctor`, `deps?`) => [`Resolved`](Resolved.md)\<`TCatalog`, `TCtor`\>
+> **Startup**\<`TCatalog`\> = \<`TCtor`\>(`ctor`, `deps?`) => [`Resolved`](Resolved.md)\<`TCatalog` & `object`, `TCtor`\>
 
-Defined in: [work/ghostbird/ghostbird/src/root/startup.ts:30](https://github.com/exteditor/ghostbird/blob/d0b443ff33fee4a1f225c01e360a67c08b1db9ee/src/root/startup.ts#L30)
+Defined in: [work/ghostbird/ghostbird/src/root/startup.ts:30](https://github.com/exteditor/ghostbird/blob/3f896472bfdb9f53de41c35a2487213bd52de1fa/src/root/startup.ts#L30)
 
 ## Type Parameters
 
@@ -30,8 +30,8 @@ Defined in: [work/ghostbird/ghostbird/src/root/startup.ts:30](https://github.com
 
 ### deps?
 
-`Iterable`\<`string` & keyof `TCatalog`\>
+`Iterable`\<`string` & keyof `TCatalog` & `object`\>
 
 ## Returns
 
-[`Resolved`](Resolved.md)\<`TCatalog`, `TCtor`\>
+[`Resolved`](Resolved.md)\<`TCatalog` & `object`, `TCtor`\>

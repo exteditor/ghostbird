@@ -1,4 +1,4 @@
-import { type IClassInfo, type IRegistry, type Resolved, wire } from "./util/wire"
+import { type IClassInfo, type IRegistry, type IWire, type Resolved, wire } from "./util/wire"
 
 /**
  * A class constructor collected.
@@ -12,7 +12,7 @@ interface Ctor {
    */
   isSingleton: boolean
   /**
-   * Specifies whether this class requires dependencies as arrays. Useful to implement composites or aggregates.
+   * Indicates whether this class expects dependencies as arrays. Useful to implement composites or aggregates.
    * If `true`, each argument to the constructor will be an array of instances.
    * If `false`, `undefined`, or the property is missing, each argument to the constructor will be an instance.
    */
@@ -29,8 +29,8 @@ interface Ctor {
 
 export type Startup<TCatalog> = <TCtor>(
   ctor: TCtor,
-  deps?: Iterable<string & keyof TCatalog>,
-) => Resolved<TCatalog, TCtor>
+  deps?: Iterable<string & keyof (TCatalog & { $wire$: IWire<TCatalog> })>,
+) => Resolved<TCatalog & { $wire$: IWire<TCatalog> }, TCtor>
 
 /**
  * Collects available classes from given module objects to make a factory.
@@ -39,12 +39,21 @@ export function startup<TCatalog>(
   modules: Iterable<Record<string, unknown>>,
   registry: IRegistry<TCatalog>,
 ): Startup<TCatalog> {
-  let wired = wire(listClasses(modules) as Iterable<IClassInfo<TCatalog>>, registry)
+  let wired = wire<TCatalog & { $wire$: IWire<TCatalog> }>(
+    listClasses(modules) as Iterable<IClassInfo<TCatalog>>,
+    registry,
+  )
 
-  return <TCtor>(ctor: TCtor, deps?: Iterable<string & keyof TCatalog>) =>
+  // Register the container itself so that we can (ab)use it as a factory
+  registry.set("$wire$", ["const", wired])
+
+  return <TCtor>(ctor: TCtor, deps?: Iterable<string & keyof (TCatalog & { $wire$: IWire<TCatalog> })>) =>
     wired.wire(
       ctor,
-      deps ?? (parseConstructorForDependencyNames(ctor as new () => unknown) as Iterable<string & keyof TCatalog>),
+      deps ??
+        (parseConstructorForDependencyNames(ctor as new () => unknown) as Iterable<
+          string & keyof (TCatalog & { $wire$: IWire<TCatalog> })
+        >),
     )
 }
 
@@ -78,7 +87,7 @@ function* listClassesInModule(module: Record<string, unknown>): Generator<IClass
       aliases: v.aliases,
       ctor: v,
       isSingleton: v.isSingleton,
-      wantArray: !!v.wantArray,
+      wantArray: Boolean(v.wantArray),
       deps: parseConstructorForDependencyNames(v),
     }
   }

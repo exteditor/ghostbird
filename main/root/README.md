@@ -6,13 +6,9 @@
 
 # root
 
-## Classes
-
-- [AliasMap](classes/AliasMap.md)
-- [Wire](classes/Wire.md)
-
 ## Interfaces
 
+- [IAliasMap](interfaces/IAliasMap.md)
 - [IClassInfo](interfaces/IClassInfo.md)
 - [IResolver](interfaces/IResolver.md)
 - [IWire](interfaces/IWire.md)
@@ -28,8 +24,11 @@
 ## Functions
 
 - [backgroundWire](functions/backgroundWire.md)
+- [defaultNameForDuplicatesOf](functions/defaultNameForDuplicatesOf.md)
+- [makeAliasMap](functions/makeAliasMap.md)
 - [makeRegistry](functions/makeRegistry.md)
 - [makeRegistryWithBody](functions/makeRegistryWithBody.md)
 - [prepareBackgroundRouter](functions/prepareBackgroundRouter.md)
 - [startup](functions/startup.md)
 - [wire](functions/wire.md)
+- [wireWith](functions/wireWith.md)

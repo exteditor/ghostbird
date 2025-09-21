@@ -24,7 +24,7 @@ Applies changes received from the GhostText server to the compose window
 
 ##### change
 
-[`BodyState`](../../ghosttext-session/type-aliases/BodyState.md)
+[`ExternalEdit`](../../ghosttext-session/type-aliases/ExternalEdit.md)
 
 The change from the server
 

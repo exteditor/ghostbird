@@ -72,7 +72,7 @@ Defined in: work/ghostbird/ghostbird/build/src/app-background/compose\_action\_n
 
 ### stop()
 
-> **stop**(`tab`): `void`
+> **stop**(`tab`): `Promise`\<`void`\>
 
 Defined in: work/ghostbird/ghostbird/build/src/app-background/compose\_action\_notifier.d.ts:9
 
@@ -84,7 +84,7 @@ Defined in: work/ghostbird/ghostbird/build/src/app-background/compose\_action\_n
 
 #### Returns
 
-`void`
+`Promise`\<`void`\>
 
 ***
 

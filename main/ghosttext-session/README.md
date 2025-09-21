@@ -12,7 +12,6 @@
 
 ## Type Aliases
 
-- [BodyState](type-aliases/BodyState.md)
 - [ClientRequest](type-aliases/ClientRequest.md)
 - [Command](type-aliases/Command.md)
 - [CommandResult](type-aliases/CommandResult.md)

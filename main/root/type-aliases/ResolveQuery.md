@@ -6,9 +6,9 @@
 
 # Type Alias: ResolveQuery\<TCatalog, T\>
 
-> **ResolveQuery**\<`TCatalog`, `T`\> = \[`"createOne"`, `Readonly`\<[`IClassInfo`](../interfaces/IClassInfo.md)\<`TCatalog`, `T`\>\>\] \| \[`"resolveOne"`, keyof `TCatalog` & `string`\] \| \[`"resolveAll"`, `Iterable`\<keyof `TCatalog` & `string`\>\] \| \[`"const"`, `T`\]
+> **ResolveQuery**\<`TCatalog`, `T`\> = \[`"prepareOne"`, `Readonly`\<[`IClassInfo`](../interfaces/IClassInfo.md)\<`TCatalog`, `T`\>\>\] \| \[`"resolveOne"`, keyof `TCatalog` & `string`\] \| \[`"resolveAll"`, `Iterable`\<keyof `TCatalog` & `string`\>\] \| \[`"const"`, `T`\]
 
-Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:112](https://github.com/exteditor/ghostbird/blob/d0b443ff33fee4a1f225c01e360a67c08b1db9ee/src/root/util/wire.ts#L112)
+Defined in: [work/ghostbird/ghostbird/src/root/util/wire.ts:122](https://github.com/exteditor/ghostbird/blob/3f896472bfdb9f53de41c35a2487213bd52de1fa/src/root/util/wire.ts#L122)
 
 An entry in the registry. It contains a query to the `IResolver` paired with a key.
 

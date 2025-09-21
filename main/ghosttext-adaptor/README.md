@@ -18,6 +18,8 @@
 
 ## Type Aliases
 
+- [BackgroundMessage](type-aliases/BackgroundMessage.md)
+- [BodyState](type-aliases/BodyState.md)
 - [ComposeDetails](type-aliases/ComposeDetails.md)
 - [IGhostClientPort](type-aliases/IGhostClientPort.md)
 - [IGhostServerPort](type-aliases/IGhostServerPort.md)

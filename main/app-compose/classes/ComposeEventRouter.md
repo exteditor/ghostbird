@@ -78,7 +78,7 @@ Defined in: work/ghostbird/ghostbird/build/src/app-compose/compose\_event\_route
 
 > **handleMessage**(`message`): `"ok"` \| `"pong"`
 
-Defined in: work/ghostbird/ghostbird/build/src/app-compose/compose\_event\_router.d.ts:9
+Defined in: work/ghostbird/ghostbird/build/src/app-compose/compose\_event\_router.d.ts:10
 
 #### Parameters
 

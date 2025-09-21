@@ -43,6 +43,8 @@ This add-on is not yet available on [addons.thunderbird.net](https://addons.thun
 3. Select `Install Add-on From File...` from the menu.
 4. Select downloaded `.xpi` file.
 
+See [the help page in the Mozilla Support Center](https://support.mozilla.org/kb/installing-addon-thunderbird) for details.
+
 ### Build from source
 
 Basically `yarn && yarn build`. See [CONTRIBUTING.md](documents/CONTRIBUTING.md) to get started.
@@ -103,7 +105,7 @@ gtClient -->|Updates| mailCompose
 * :nest_with_eggs: Start button on the toolbar
 * :nest_with_eggs: Edit plain text emails
 * :nest_with_eggs: Keyboard shortcuts
-* :construction: Roadmap and [Project board][proj]
+* :nest_with_eggs: Roadmap and [Project board][proj]
 * :no_entry: Non-bidirectional: Thunderbird becomes read-only while Ghostbird is active
 * :no_entry: No i18n: the UI is only in English*
 * :no_entry: Quirky when editing HTML emails
@@ -112,22 +114,22 @@ gtClient -->|Updates| mailCompose
 
 ### v0.1.0 (Alpha) - 2025 Q3
 
-* :construction: Debug
+* :nest_with_eggs: [Debug](https://github.com/exteditor/ghostbird/issues/2)
 
 ### v0.x.x (Beta) - 2025 Q4
 
-* :white_large_square: Website with some screenshot
-* :white_large_square: Basic option (at minimum, the port of the GhostText server)
-* :white_large_square: Prepare for i18n (Make texts translatable)
-* :white_large_square: Smoother editing of HTML emails
+* :white_large_square: [Website with some screenshot](https://github.com/exteditor/ghostbird/issues/5)
+* :construction: [Basic option (at minimum, the port of the GhostText server)](https://github.com/exteditor/ghostbird/issues/3)
+* :construction: [Prepare for i18n (Make texts translatable)](https://github.com/exteditor/ghostbird/issues/4)
+* :white_large_square: [Smoother editing of HTML emails](https://github.com/exteditor/ghostbird/issues/6)
 
 ### v1.0.0 (Stable) - 2026 Q2
 
-* :white_large_square: Publish on AMO (functionally identical to the last beta)
+* :white_large_square: [Publish on AMO (functionally identical to the last beta)](https://github.com/exteditor/ghostbird/issues/9)
 
 ### v1.x.x (Stable) - 2026 Q4
 
-* :white_large_square: Edit Address and Subject fields
+* :white_large_square: [Edit Address and Subject fields](https://github.com/exteditor/ghostbird/issues/8)
 * :white_large_square: Continue i18n (Add more languages)
 * :white_large_square: Support text editors that lack a GhostText add-on (e.g., Notepad)*
 * :white_large_square: Automate AMO release on GitHub
@@ -136,7 +138,7 @@ gtClient -->|Updates| mailCompose
 
 ### v2.x.x (Future)
 
-* Proper implementation as a GhostText client
+* [Proper implementation as a GhostText client](https://github.com/exteditor/ghostbird/issues/10)
   * :white_large_square: Cursor and selection synchronization
   * :white_large_square: Bidirectional editing; changes in Thunderbird are reflected in the text editor
 

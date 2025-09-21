@@ -6,8 +6,16 @@
 
 # Type Alias: InternalEdit
 
-> **InternalEdit** = \{ `body`: `string`; \} \| [`BodyState`](BodyState.md)
+> **InternalEdit** = `object`
 
-Defined in: work/ghostbird/ghostbird/build/src/ghosttext-session/types.d.ts:65
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-session/types.d.ts:67
 
 Edits from the email compose window (the GhostText client)
+
+## Properties
+
+### body
+
+> **body**: `string`
+
+Defined in: work/ghostbird/ghostbird/build/src/ghosttext-session/types.d.ts:68

@@ -96,7 +96,7 @@ Handles shortcut key presses defined in the manifest.json
 
 > **handleComposeAction**(`tab`): `Promise`\<`void`\>
 
-Defined in: work/ghostbird/ghostbird/build/src/app-background/background\_event\_router.d.ts:13
+Defined in: work/ghostbird/ghostbird/build/src/app-background/background\_event\_router.d.ts:14
 
 Handles the toolbar button press
 
@@ -116,7 +116,7 @@ Handles the toolbar button press
 
 > **handleMessage**(`_msg`, `_tab`): `string`
 
-Defined in: work/ghostbird/ghostbird/build/src/app-background/background\_event\_router.d.ts:15
+Defined in: work/ghostbird/ghostbird/build/src/app-background/background\_event\_router.d.ts:16
 
 handles one-off messages from content scripts
 

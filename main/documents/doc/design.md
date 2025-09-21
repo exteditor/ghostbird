@@ -228,9 +228,9 @@ thunderbird --> background & compose & options
 ```
 
 * All `src/*/index.ts` export everything in the same folder, so practically these folders are equivalent to modules.
-* `root/` contains entry points and depends on all other modules.
+* `root/` contains entry points and depends on all other modules except `test/`.
 * `ghosttext-session/` doesn't depend on other modules.
-* `ghosttext-*/` depends on `ghosttext`.
+* `ghosttext-adaptor/` depends on `ghosttext-runner/`, which depends on `ghosttext-session/`.
 * `root/` and `thunderbird/` can use Thunderbird API directly.
   * Other modules define subsets of the Thunderbird API they use as interfaces in `api.ts` files in their directories, which are implemented by `thunderbird/` modules.
 
@@ -287,6 +287,29 @@ TL;DR: `root` module contains entry point and the [Composition Root][ploeh].
 * Use of automatic instantiation must be restricted to `root/*.ts` to make the code easier to follow.
 * `test/startup.test.ts` contains tests to verify that all classes registered can be instantiated successfully.
 * See [FAQ](faq-architectural.md) for some design decisions and justification.
+
+```mermaid
+flowchart LR
+
+need_instance["Need an<br>instance"]
+is_singleton{" "}
+is_singleton -->|isSingleton = true| singleton["Cache the<br>instance"]
+is_singleton -->|isSingleton = false| factory["Instantiate on<br>each request"]
+
+prepare_argument{" "}
+prepare_argument -->|Need arguments| want_array{" "}
+prepare_argument -->|No argument<br>needed| Done@{shape: dbl-circ}
+want_array -->|wantArray = false| unique_instance["Resolve the<br>unique name"]
+want_array -->|wantArray = true| array_instances["Resolve all instances<br>having the same name"]
+is_alias{" "}
+is_alias <-->|Alias| resolve_alias["Resolve<br>the alias"] --> instantiate_class
+is_alias -->|Actual class| instantiate_class["Prepare<br>the instance"]
+
+need_instance --> is_singleton
+singleton & factory --> prepare_argument
+unique_instance & array_instances --> is_alias
+instantiate_class --> need_instance
+```
 
 ## Links
 
