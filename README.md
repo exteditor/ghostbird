@@ -8,7 +8,11 @@
 
 A [GhostText][gt] implementation for the [Thunderbird][tb] email client.
 
-This repo contains an in-development Thunderbird add-on that works as a [GhostText client][protocol] in the mail compose window, so that users can write their emails in their favorite text editor like Vim (provided the text editor already has a GhostText add-on installed).
+Ghostbird is a Thunderbird add-on that lets you compose your emails in your favorite text editor - Vim, Neovim, VS Code, Sublime Text, Emacs, or any other editor - with a GhostText add-on installed.
+
+Please visit the website for the original browser add-on, [GhostText][gt] by Federico Brigante, to get the idea.
+
+Since synchronization uses the GhostText protocol, your text editor needs to have a GhostText server function. This means you need to install a plugin on your text editor's side to listen for connections from Thunderbird.
 
 ## Requirements
 
@@ -104,6 +108,9 @@ gtClient -->|Updates| mailCompose
 
 See also [a list of milestones][milestones].
 
+<details>
+<summary>Changelog & Milestones</summary>
+
 ### Legend
 
 |Mark|Meaning|Description|
@@ -114,74 +121,85 @@ See also [a list of milestones][milestones].
 |:white_large_square:|Planned|Must be implemented to release the version|
 |:no_entry:|Limitation|The version will be released with this limitation|
 
-### v0.0.1 (Alpha) - Released
+### Alpha
 
-* :white_check_mark: Prepare the project skeleton (README, build, test, lint, debug, CI)
-* :white_check_mark: Start button on the toolbar
-* :white_check_mark: Edit plain text emails
-* :white_check_mark: Keyboard shortcuts
-* :white_check_mark: [Milestones][milestones] and [Project board][proj]
-* :no_entry: Non-bidirectional: Thunderbird becomes read-only while Ghostbird is active
-* :no_entry: No i18n: the UI is only in English*
-* :no_entry: Quirky when editing HTML emails
+* v0.0.1 - Released
+
+  * :white_check_mark: Prepare the project skeleton (README, build, test, lint, debug, CI)
+  * :white_check_mark: Start button on the toolbar
+  * :white_check_mark: Edit plain text emails
+  * :white_check_mark: Keyboard shortcuts
+  * :white_check_mark: [Milestones][milestones] and [Project board][proj]
+  * :no_entry: Non-bidirectional: Thunderbird becomes read-only while Ghostbird is active
+  * :no_entry: No i18n: the UI is only in English*
+  * :no_entry: Quirky when editing HTML emails
 
 >\*GhostText communicates only in UTF-8, so you can safely write emails in any language.
 
-### v0.1.0 (Alpha) - Released
+* v0.1.0 - Released
 
-* :white_check_mark: [Debug](https://github.com/exteditor/ghostbird/issues/2)
+  * :white_check_mark: [Debug](https://github.com/exteditor/ghostbird/issues/2)
 
-### v0.2.0 (Beta) - Released
+* v0.2.0 - Released
 
-* :white_check_mark: [Basic option (at minimum, the port of the GhostText server)](https://github.com/exteditor/ghostbird/issues/3)
-* :white_check_mark: [Prepare for i18n (Make texts translatable)](https://github.com/exteditor/ghostbird/issues/4)
+  * :white_check_mark: [Basic option (at minimum, the port of the GhostText server)](https://github.com/exteditor/ghostbird/issues/3)
+  * :white_check_mark: [Prepare for i18n (Make texts translatable)](https://github.com/exteditor/ghostbird/issues/4)
 
-### v0.2.1 (Beta) - Released
+### Beta
 
-* :white_check_mark: [Fix empty host field being sent to the server](https://github.com/exteditor/ghostbird/issues/22)
+* v0.2.1 - Released
 
-### v0.3.0 (Beta) - Released
+  * :white_check_mark: [Fix empty host field being sent to the server](https://github.com/exteditor/ghostbird/issues/22)
 
-* :nest_with_eggs: [Show notifications](https://github.com/exteditor/ghostbird/issues/24)
-* :nest_with_eggs: [Continue i18n (Add more languages)](https://github.com/exteditor/ghostbird/issues/26)
+* v0.3.0 - Released
 
-### v0.4.0 (Beta) - Current
+  * :nest_with_eggs: [Show notifications](https://github.com/exteditor/ghostbird/issues/24)
+  * :nest_with_eggs: [Continue i18n (Add more languages)](https://github.com/exteditor/ghostbird/issues/26)
 
-* :nest_with_eggs: [Add a way to disconnect using only a mouse](https://github.com/exteditor/ghostbird/issues/30)
+* v0.4.0 - Current
 
-### v0.5.0 (Beta) - 2025 Q4
+  * :nest_with_eggs: [Add a way to disconnect using only a mouse](https://github.com/exteditor/ghostbird/issues/30)
 
-* :construction: [Edit a HTML email as if it were a plain text email](https://github.com/exteditor/ghostbird/issues/6)
+* v0.5.0 - 2025 Q4
 
-### v0.x.x (Beta) - 2025 Q4
+  * :nest_with_eggs: [Website with some screenshots](https://github.com/exteditor/ghostbird/issues/5)
+  * :construction: [Edit a HTML email as if it were a plain text email](https://github.com/exteditor/ghostbird/issues/6)
 
-* :construction: [Website with some screenshots](https://github.com/exteditor/ghostbird/issues/5)
+* v0.x.x - 2025 Q4
 
-### v1.0.0 (Stable) - 2026 Q2
+  * :white_large_square: [Workaround for the problem where the email text is cleared when VSCod(e|ium) closes or saves the tab](https://github.com/exteditor/ghostbird/issues/23)
 
-* :white_large_square: [Mark as stable on AMO (functionally identical to the last beta)](https://github.com/exteditor/ghostbird/issues/9)
+### Stable
 
-### v1.x.x (Stable) - 2026 Q4
+* v1.0.0 - 2026 Q2
 
-* :white_large_square: [Edit Address and Subject fields](https://github.com/exteditor/ghostbird/issues/8)
-* :white_large_square: [Support text editors that lack a GhostText add-on (e.g., Notepad)*](https://github.com/exteditor/ghostbird/issues/25)
+  * :white_large_square: [Mark as stable on AMO (functionally identical to the last beta)](https://github.com/exteditor/ghostbird/issues/9)
+
+* v1.x.x - 2026 Q4
+
+  * :white_large_square: [Edit Address and Subject fields](https://github.com/exteditor/ghostbird/issues/8)
+  * :white_large_square: [Support text editors that lack a GhostText add-on (e.g., Notepad)*](https://github.com/exteditor/ghostbird/issues/25)
 
 > \*Requires protocol extension and server-side support. I intend to develop one by forking [GhostText-Any](https://github.com/newsch/GhostText-Any/).
 
-### v2.x.x (Future)
+### Future
 
-* [Proper implementation as a GhostText client](https://github.com/exteditor/ghostbird/issues/10)
-  * :white_large_square: Cursor and selection synchronization
-  * :white_large_square: Bidirectional editing; changes in Thunderbird are reflected in the text editor
+* v2.x.x
 
-* :white_large_square: Better handling of conflicts, disconnection, and reconnection (possibly extending the protocol)
-* :white_large_square: [Automate AMO release on GitHub Action](https://github.com/exteditor/ghostbird/issues/27)
+  * [Proper implementation as a GhostText client](https://github.com/exteditor/ghostbird/issues/10)
+    * :white_large_square: Cursor and selection synchronization
+    * :white_large_square: Bidirectional editing; changes in Thunderbird are reflected in the text editor
+
+  * :white_large_square: Better handling of conflicts, disconnection, and reconnection (possibly extending the protocol)
+  * :white_large_square: [Automate AMO release on GitHub Action](https://github.com/exteditor/ghostbird/issues/27)
 
 ### Non-goals
 
 * Editing text boxes other than the email compose window in Thunderbird
 * WYSIWYG editing for HTML emails
 * Thunderbird Mobile support
+
+</details>
 
 ## Contributing
 
