@@ -1,6 +1,6 @@
 /** @file wire with conventions */
 
-import type { IClassInfo, IRegistry, KeyOf, Resolved } from "."
+import type { ClassInfo, IRegistry, KeyOf, Resolved } from "."
 import { wired } from "./wired"
 
 /**
@@ -47,7 +47,7 @@ export function wireless<TCatalog>(
   modules: Iterable<Record<string, unknown>>,
   registry: IRegistry<Partial<TCatalog>>,
 ): WirelessInjector<TCatalog> {
-  const wire = wired(listClasses(modules) as unknown as Iterable<IClassInfo<TCatalog>>, registry)
+  const wire = wired(listClasses(modules) as unknown as Iterable<ClassInfo<TCatalog>>, registry)
   const injector: WirelessInjector<TCatalog> = <TCtor>(ctor: TCtor, deps?: Iterable<KeyOf<TCatalog>>) =>
     wire.wire(ctor, deps ?? (parseConstructorForDependencyNames(ctor as new () => unknown) as KeyOf<TCatalog>[]))
 
@@ -62,7 +62,7 @@ export function wireless<TCatalog>(
  * @param modules Modules to scan
  * @yields registration for the container
  */
-function* listClasses(modules: Iterable<Record<string, unknown>>): Generator<IClassInfo<Record<string, unknown>>> {
+function* listClasses(modules: Iterable<Record<string, unknown>>): Generator<ClassInfo<Record<string, unknown>>> {
   for (let mod of modules) {
     for (let classInfo of listClassesInModule(mod)) {
       // Assumes there is no name clash. We test elsewhere to verify it
@@ -76,7 +76,7 @@ function* listClasses(modules: Iterable<Record<string, unknown>>): Generator<ICl
  * @param module Module object to scan
  * @yields registration for the container
  */
-function* listClassesInModule(module: Record<string, unknown>): Generator<IClassInfo<Record<string, unknown>>> {
+function* listClassesInModule(module: Record<string, unknown>): Generator<ClassInfo<Record<string, unknown>>> {
   for (const [k, v] of Object.entries(module)) {
     if (!isStartupClass(v)) {
       continue

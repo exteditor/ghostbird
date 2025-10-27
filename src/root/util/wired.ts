@@ -1,4 +1,4 @@
-import type { IClassInfo, IRegistry, IWire, KeyOf } from "."
+import type { ClassInfo, IRegistry, IWire, KeyOf } from "."
 import { AliasMap } from "./alias_map"
 import { wire } from "./wire"
 
@@ -16,7 +16,7 @@ export const defaultNameForDuplicatesOf = <TCatalog>(alias: KeyOf<TCatalog>): Ke
  * @returns A DI container
  */
 export function wired<TCatalog>(
-  classes: Iterable<Readonly<IClassInfo<TCatalog>>>,
+  classes: Iterable<Readonly<ClassInfo<Partial<TCatalog>>>>,
   registry: IRegistry<Partial<TCatalog>>,
 ): IWire<TCatalog> {
   return wire(classes, registry, new AliasMap(defaultNameForDuplicatesOf), defaultNameForDuplicatesOf)
