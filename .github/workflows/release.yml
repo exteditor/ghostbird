@@ -40,11 +40,14 @@ jobs:
       run: corepack yarn install --immutable
 
     - name: Build
-      run: corepack yarn build
+      run: corepack yarn run build
 
     - name: web-ext lint
       run: corepack yarn exec web-ext lint --pretty --output=json
 
-    - run: npx changelogithub@13.16.0 --assets 'dist/*.xpi'
+    - name: Create a source zip
+      run: corepack yarn run archive
+
+    - run: npx changelogithub@13.16.0 --assets 'dist/*.xpi' --assets 'dist/*.zip'
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
