@@ -3,9 +3,9 @@ import type { IAliasMap, IClassInfo, KeyOf, ResolveQuery } from "./wire"
 /** @inheritdoc */
 export class AliasMap<TCatalog> implements IAliasMap<TCatalog> {
   constructor(
-    private readonly nameForDuplicatesOf: (alias: string) => string,
-    private readonly map: Map<keyof TCatalog & string, Set<keyof TCatalog & string>> = new Map(),
-    private readonly duplicateWanted: Set<keyof TCatalog & string> = new Set(),
+    private readonly nameForDuplicatesOf: (alias: KeyOf<TCatalog>) => KeyOf<TCatalog>,
+    private readonly map: Map<KeyOf<TCatalog>, Set<KeyOf<TCatalog>>> = new Map(),
+    private readonly duplicateWanted: Set<KeyOf<TCatalog>> = new Set(),
   ) {}
 
   /** @inheritdoc */
@@ -27,7 +27,7 @@ export class AliasMap<TCatalog> implements IAliasMap<TCatalog> {
   }
 
   /** @inheritdoc */
-  *makeAliasEntries(): Generator<[string, ResolveQuery<TCatalog, KeyOf<TCatalog>>]> {
+  *makeAliasEntries(): Generator<[KeyOf<TCatalog>, ResolveQuery<TCatalog, KeyOf<TCatalog>>]> {
     for (const [k, v] of this.map) {
       const [one] = v
       if (one) {

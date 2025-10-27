@@ -141,7 +141,7 @@ export interface IAliasMap<TCatalog> {
   /**
    * Generates registry entries from collected aliases
    */
-  makeAliasEntries(): Generator<[string, ResolveQuery<TCatalog>]>
+  makeAliasEntries(): Generator<[KeyOf<TCatalog>, ResolveQuery<TCatalog>]>
 }
 
 /**
@@ -149,8 +149,8 @@ export interface IAliasMap<TCatalog> {
  */
 class Wire<TCatalog> implements IWire<TCatalog>, IResolver<TCatalog> {
   constructor(
-    private readonly nameForDuplicatesOf: (alias: string) => string,
-    private readonly registry: Pick<IRegistry<TCatalog>, "get">,
+    private readonly nameForDuplicatesOf: (alias: KeyOf<TCatalog>) => KeyOf<TCatalog>,
+    private readonly registry: Pick<IRegistry<Partial<TCatalog>>, "get">,
     private readonly cache: Map<KeyOf<TCatalog>, TCatalog[keyof TCatalog]>,
   ) {}
 
@@ -218,7 +218,7 @@ class Wire<TCatalog> implements IWire<TCatalog>, IResolver<TCatalog> {
     let depNames = wantArray ? deps.map(this.nameForDuplicatesOf) : deps
 
     // Assumes no dependency loops exist (verified by user's unit tests)
-    return this.wire(ctor, depNames as KeyOf<TCatalog>[])
+    return this.wire(ctor, depNames)
   }
 }
 
@@ -235,7 +235,7 @@ export function wire<TCatalog>(
   classes: Iterable<Readonly<IClassInfo<TCatalog>>>,
   registry: IRegistry<Partial<TCatalog>>,
   aliasCollector: IAliasMap<TCatalog>,
-  nameForDuplicatesOf: (alias: string) => string,
+  nameForDuplicatesOf: (alias: KeyOf<TCatalog>) => KeyOf<TCatalog>,
 ): IWire<TCatalog> {
   for (let info of classes) {
     registry.set(info.name, ["prepareOne", info])
@@ -244,5 +244,5 @@ export function wire<TCatalog>(
   for (let entry of aliasCollector.makeAliasEntries()) {
     registry.set(...(entry as [KeyOf<TCatalog>, ResolveQuery<TCatalog, KeyOf<TCatalog>>]))
   }
-  return new Wire(nameForDuplicatesOf, registry as unknown as IRegistry<TCatalog>, new Map())
+  return new Wire(nameForDuplicatesOf, registry, new Map())
 }
