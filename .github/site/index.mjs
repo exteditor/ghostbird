@@ -1,9 +1,7 @@
-import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.0/+esm";
-import "https://cdn.jsdelivr.net/npm/docsify@4.13.1/+esm";
+import mermaid from "mermaid";
+import "docsify";
 
 // @ts-check
-
-mermaid.initialize({ startOnLoad: false });
 
 /**
  * Build a URL to a GitHub resource
@@ -18,7 +16,7 @@ const urlFor = (type, path) => `https://github.com/exteditor/ghostbird/${encodeU
  * @param {string} url The URL to redirect to
  * @returns {string} A Markdown text
  */
-const redirectTo = (url) => JSON.stringify({redirectTo: url});
+const redirectTo = (url) => JSON.stringify({ redirectTo: url });
 
 /**
  * Does redirect if the text is an instruction for it.
@@ -84,6 +82,7 @@ window.$docsify = {
     '/CONTRIBUTING',
     '/doc/faq',
     '/doc/faq-architectural',
+    '/doc/design',
     '/doc/building',
     '/doc/testing',
   ],
@@ -105,3 +104,8 @@ window.$docsify = {
     },
   ],
 };
+
+mermaid.initialize({ startOnLoad: false });
+
+// load the plugin here having the global `$docsify` defined
+await import("docsify/plugins/search");
