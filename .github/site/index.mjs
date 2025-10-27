@@ -21,7 +21,7 @@ const redirectTo = (url) => JSON.stringify({ redirectTo: url });
 /**
  * Does redirect if the text is an instruction for it.
  * @param {string} text A Markdown text that may contain a redirect instruction
- * @returns {string} Returns the `text` as-is if it doesn't contain redirect instruction
+ * @returns {string | undefined} a message if the text is a redirect instruction; `undefined` otherwise
  */
 function tryRedirect(text) {
   try {
@@ -33,7 +33,7 @@ function tryRedirect(text) {
   } catch (e) {
     console.warn("failed to parse the redirect instruction", e);
   }
-  return text;
+  return undefined;
 }
 
 /**
@@ -98,8 +98,7 @@ window.$docsify = {
   },
   plugins: [
     (hook, vm) => {
-      hook.beforeEach((text) => tryRedirect(text));
-      hook.beforeEach((text) => addFooter(text, vm));
+      hook.beforeEach((text) => tryRedirect(text) ?? addFooter(text, vm) ?? text);
       hook.doneEach(() => mermaid.run());
     },
   ],
