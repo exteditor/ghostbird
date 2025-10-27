@@ -1,16 +1,13 @@
 # This Makefile is here so that `make build` is a bit shorter than
 # `corepack enable && yarn install && yarn build`
 
-.PHONY: all archive build check clean deepclean devenv dist doc fmt fix js start test web-ext xpi
+.PHONY: all build check clean deepclean devenv dist doc fmt fix js start test web-ext xpi
 
 GIT=git
 YARN=corepack yarn
 CP=cp
 
-all: test xpi doc archive
-
-archive: build/
-	$(GIT) archive --output="build/src-$$($(GIT) describe --always --long --tags).zip" HEAD
+all: test xpi
 
 build: xpi
 

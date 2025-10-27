@@ -21,6 +21,7 @@
   },
   "scripts": {
     "sdk": "yarn dlx @yarnpkg/sdks",
+    "archive": "NAME=$(basename dist/*.xpi .xpi)-src && git archive --output=dist/${NAME}.zip --prefix=${NAME}/ext/ --add-file=dist/ext/manifest.json --prefix=${NAME}/ HEAD",
     "barrelsby": "node --experimental-strip-types tools/barrelsby.ts",
     "check": "run check-type && biome check --error-on-warnings",
     "fix": "biome check --write",
