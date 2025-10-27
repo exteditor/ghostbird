@@ -37,8 +37,16 @@ function tryRedirect(text) {
 }
 
 /**
+ * Fix some emojis Docsify doesn't recognize
+ * @param {string} text The Markdown text
+ * @returns {string} Markdown text processed
+ */
+const fixEmoji = (text) => text.replaceAll(':nest_with_eggs:', '\u{1faba}');
+
+/**
  * Add a footer to the Markdown text
  * @param {string} text The Markdown text
+ * @param {import('docsify').Docsify} vm Info about the page
  * @returns {string} Markdown text with footer added
  */
 const addFooter = (text, vm) => `${text}
@@ -63,7 +71,6 @@ window.$docsify = {
   formatUpdated: '{YYYY}-{MM}-{DD}',
   relativePath: true,
   executeScript: false,
-  homepage: "homepage.md",
   coverpage: "coverpage.md",
   loadNavbar: "navbar.md",
   mergeNavbar: true,
@@ -71,7 +78,6 @@ window.$docsify = {
   maxLevel: 3,
   themeColor: '#0b9dd6',
   routes: {
-    '/README': (route) => redirectTo(urlFor('blob', `${route}.md`)),
     '/LICENSE': (route) => redirectTo(urlFor('blob', route)),
     '/[-._/a-zA-Z]*[.][a-zA-Z]+$': (route) => redirectTo(urlFor('blob', route)),
     '/[-._/a-zA-Z]+/$': (route) => redirectTo(urlFor('tree', route)),
@@ -98,7 +104,11 @@ window.$docsify = {
   },
   plugins: [
     (hook, vm) => {
-      hook.beforeEach((text) => tryRedirect(text) ?? addFooter(text, vm) ?? text);
+      hook.beforeEach((text) =>
+        tryRedirect(text) ??
+        addFooter(fixEmoji(text), vm) ??
+        text
+      );
       hook.doneEach(() => mermaid.run());
     },
   ],
