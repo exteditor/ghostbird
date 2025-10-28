@@ -17,11 +17,12 @@ import type {
 import * as ghosttextAdaptor from "src/ghosttext-adaptor"
 import type { IHeart, IMessagePort } from "src/ghosttext-runner"
 import * as ghosttextRunner from "src/ghosttext-runner"
-import type { EditorChangeResponse, UpdateRequest } from "src/ghosttext-session"
+import type { EditorChangeResponse, GhostTextClient, UpdateRequest } from "src/ghosttext-session"
 import * as ghosttextSession from "src/ghosttext-session"
 import type { BackgroundCatalog, BackgroundConstants, ComposeCatalog, ComposeConstants } from "src/root/startup"
-import { makeRegistry, type WirelessInjector, wireless } from "src/root/util"
+import { type IRegistry, makeRegistry, type WirelessInjector, wireless } from "src/root/util"
 import { promisifyMessageChannel } from "src/thunderbird/util"
+import { generatorTee } from "src/util"
 import { describe, it, vi as jest } from "vitest"
 import type OptionsSync from "webext-options-sync"
 
@@ -71,7 +72,7 @@ type MockedThunderbirdCatalog = {
 function makeMockedBackgroundInjector(
   mockedThunderbird: MockedThunderbirdCatalog,
 ): WirelessInjector<BackgroundCatalog> {
-  let registry = makeRegistry<Partial<BackgroundCatalog>>({
+  let registry = makeRegistry<Partial<BackgroundCatalog & { ghostTextClient: GhostTextClient }>>({
     messenger: Symbol("messenger") as unknown as typeof globalThis.messenger,
     optionsSyncCtor: Symbol("optionsSyncCtor") as unknown as typeof OptionsSync,
     menuItems: [
@@ -84,7 +85,12 @@ function makeMockedBackgroundInjector(
     ...mockedThunderbird,
   } satisfies MockedThunderbirdCatalog & BackgroundConstants)
 
-  return wireless([appBackground, ghosttextSession, ghosttextAdaptor, ghosttextRunner], registry)
+  const injector = wireless([appBackground, ghosttextSession, ghosttextAdaptor, ghosttextRunner], registry)
+
+  // override ghostTextClient to add logging
+  enableLogging(registry)
+
+  return injector
 }
 
 function makeMockedComposeInjector(): WirelessInjector<ComposeCatalog> {
@@ -97,6 +103,7 @@ function makeMockedComposeInjector(): WirelessInjector<ComposeCatalog> {
 
   return wireless([appCompose], registry)
 }
+
 /** Build a mock/stub of the Thunderbird API for testing purposes. */
 function makeMockedThunderbird(
   openPortCallback: () => IGhostServerPort,
@@ -142,6 +149,33 @@ function makeMockedThunderbird(
     notificationTray: Symbol("notificationTray") as unknown as INotificationTray,
     uiUtil: Symbol("uiUtil") as unknown as IUiUtil,
   } satisfies MockedThunderbirdCatalog
+}
+
+function enableLogging(
+  registry: IRegistry<Partial<{ ghostTextClient: GhostTextClient; "ghostTextClient:original": GhostTextClient }>>,
+): void {
+  const entry = registry.get("ghostTextClient" as const)
+  if (entry?.[0] !== "prepareOne") {
+    throw Error(`ghostTextClient not found in registry`)
+  }
+  const key = "ghostTextClient:original" as const
+  registry.set(key, entry)
+  registry.set("ghostTextClient", [
+    "prepareOne",
+    {
+      ...entry[1],
+      ctor: LoggingGhostTextClient as unknown as typeof GhostTextClient,
+      deps: [key],
+    },
+  ])
+}
+
+class LoggingGhostTextClient implements GhostTextClient {
+  constructor(private readonly wrapped: GhostTextClient) {}
+
+  run(): ghosttextSession.GhostTextSession {
+    return generatorTee(this.wrapped.run())
+  }
 }
 
 class Ghostbird {
