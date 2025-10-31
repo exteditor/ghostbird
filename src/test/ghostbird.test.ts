@@ -3,7 +3,7 @@ import { Ghostbird } from "./testbench/ghostbird"
 
 describe("Ghostbird", () => {
   it("should send initial text to server when started from toolbar", async ({ expect }) => {
-    const sut = new Ghostbird()
+    const sut = makeGhostbird()
     sut.startFromToolbar({ id: 42 })
     sut.composeBody.textContent = "hello"
 
@@ -20,7 +20,7 @@ describe("Ghostbird", () => {
   })
 
   it("should apply text from server to the compose body", async ({ expect }) => {
-    const sut = new Ghostbird()
+    const sut = makeGhostbird()
     sut.startFromToolbar({ id: 42 })
     sut.composeBody.textContent = "hello"
 
@@ -31,3 +31,10 @@ describe("Ghostbird", () => {
     expect(sut.composeBody.textContent).equals("hello, world")
   })
 })
+
+function makeGhostbird(): Ghostbird {
+  return new Ghostbird({
+    body: document.body,
+    selection: getSelection() as Selection,
+  })
+}

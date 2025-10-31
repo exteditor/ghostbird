@@ -39,6 +39,7 @@ import { typecheckWithTsc } from "./typecheck_with_tsc.ts"
 export default (): UserConfig[] => [
   { ...commonConfig, ...esmConfig },
   { ...commonConfig, ...iifeConfig },
+  ...(isRelease ? [] : [{ ...commonConfig, ...testbenchConfig }]),
 ]
 
 const isRelease: boolean = env.CI === "true" || existsSync(join(import.meta.dirname, "..", "ext", "manifest.json"))
@@ -145,6 +146,22 @@ const iifeConfig = {
   outputOptions: {
     entryFileNames: "js/[name].js",
     intro: "'use strict';",
+    sourcemapPathTransform: isRelease ? makeRelativeSourcePath : makeAbsoluteSourcePath,
+    chunkFileNames,
+  },
+} satisfies UserConfig
+
+// biome-ignore lint/nursery/useExplicitType: we want tsc to infer it
+const testbenchConfig = {
+  name: "testbench",
+  outDir: "dist/testbench/",
+  entry: ["src/test/testbench/main.ts"],
+  format: "es",
+  plugins: [
+    // Adjust console logs
+    replace,
+  ],
+  outputOptions: {
     sourcemapPathTransform: isRelease ? makeRelativeSourcePath : makeAbsoluteSourcePath,
     chunkFileNames,
   },
