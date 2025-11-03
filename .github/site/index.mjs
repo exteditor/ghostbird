@@ -9,7 +9,8 @@ import "docsify";
  * @param {string} path Absolute path (/ points to the repository root) to the resource
  * @returns {string} The URL to the resource
  */
-const urlFor = (type, path) => `https://github.com/exteditor/ghostbird/${encodeURIComponent(type)}/main/${encodeURIComponent(path.replace(/^[/]+/, ''))}`;
+const urlFor = (type, path) =>
+  `https://github.com/exteditor/ghostbird/${encodeURIComponent(type)}/main/${encodeURIComponent(path.replace(/^[/]+/, ""))}`;
 
 /**
  * Build a Markdown text that redirects to a URL
@@ -41,7 +42,7 @@ function tryRedirect(text) {
  * @param {string} text The Markdown text
  * @returns {string} Markdown text processed
  */
-const fixEmoji = (text) => text.replaceAll(':nest_with_eggs:', '\u{1faba}');
+const fixEmoji = (text) => text.replaceAll(":nest_with_eggs:", "\u{1faba}");
 
 /**
  * Add a footer to the Markdown text
@@ -56,7 +57,7 @@ ____
 [▲ Back to Top](#top)
 <div align="right">
 
-Last Update: [{docsify-updated}](${urlFor('blob', vm.route.file)})<br>
+Last Update: [{docsify-updated}](${urlFor("blob", vm.route.file)})<br>
 Powered by [Docsify](https://docsify.js.org/)
 
 </div>
@@ -65,10 +66,10 @@ Powered by [Docsify](https://docsify.js.org/)
 // see https://docsify.js.org/#/configuration
 
 window.$docsify = {
-  name: 'Ghostbird \u{1faba}\u{1f4eb}\u{1f47b}',
-  repo: 'exteditor/ghostbird',
-  logo: 'ext/blue.svg',
-  formatUpdated: '{YYYY}-{MM}-{DD}',
+  name: "Ghostbird \u{1faba}\u{1f4eb}\u{1f47b}",
+  repo: "exteditor/ghostbird",
+  logo: "ext/blue.svg",
+  formatUpdated: "{YYYY}-{MM}-{DD}",
   relativePath: true,
   executeScript: false,
   coverpage: "coverpage.md",
@@ -76,39 +77,36 @@ window.$docsify = {
   mergeNavbar: true,
   auto2top: true,
   maxLevel: 3,
-  themeColor: '#0b9dd6',
+  themeColor: "#0b9dd6",
   routes: {
-    '/LICENSE': (route) => redirectTo(urlFor('blob', route)),
-    '/[-._/a-zA-Z]*[.][a-zA-Z]+$': (route) => redirectTo(urlFor('blob', route)),
-    '/[-._/a-zA-Z]+/$': (route) => redirectTo(urlFor('tree', route)),
+    "/LICENSE": (route) => redirectTo(urlFor("blob", route)),
+    "/[-._/a-zA-Z]*[.][a-zA-Z]+$": (route) => redirectTo(urlFor("blob", route)),
+    "/[-._/a-zA-Z]+/$": (route) => redirectTo(urlFor("tree", route)),
   },
   search: [
-    '/',
-    '/BUILDING',
-    '/CONTRIBUTING',
-    '/doc/faq',
-    '/doc/faq-architectural',
-    '/doc/design',
-    '/doc/building',
-    '/doc/testing',
+    "/",
+    "/BUILDING",
+    "/CONTRIBUTING",
+    "/doc/faq",
+    "/doc/faq-architectural",
+    "/doc/design",
+    "/doc/building",
+    "/doc/testing",
   ],
   markdown: {
     renderer: {
-      code(code, lang) {
+      code(...args) {
+        let [code, lang] = args;
         if (lang === "mermaid") {
           return `<pre class="mermaid">${code}</pre>`;
         }
-        return this.origin.code.apply(this, arguments);
-      }
-    }
+        return this.origin.code.apply(this, args);
+      },
+    },
   },
   plugins: [
     (hook, vm) => {
-      hook.beforeEach((text) =>
-        tryRedirect(text) ??
-        addFooter(fixEmoji(text), vm) ??
-        text
-      );
+      hook.beforeEach((text) => tryRedirect(text) ?? addFooter(fixEmoji(text), vm) ?? text);
       hook.doneEach(() => mermaid.run());
     },
   ],
