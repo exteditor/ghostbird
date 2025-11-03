@@ -35,8 +35,6 @@ Since synchronization uses the GhostText protocol, your text editor needs to hav
 
 [<img src="./ext/blue.svg" width="48" height="48" border="1" align="right" alt="logo" title="Grey-headed bushshrike (Malaconotus blanchoti) is sometimes called 'ghostbird'">][bird]
 
-* See [the help page in the Mozilla Support Center](https://support.mozilla.org/kb/installing-addon-thunderbird) for details.
-
 You can install Ghostbird in several ways:
 
 ### Install within Thunderbird (Recommended)
@@ -44,6 +42,8 @@ You can install Ghostbird in several ways:
 1. In Thunderbird, open `Add-ons Manager`.
 2. Search for "Ghostbird".
 3. Click the <kbd>+ Add to Thunderbird</kbd> button.
+
+* See [the help page in the Mozilla Support Center](https://support.mozilla.org/kb/installing-addon-thunderbird) for details.
 
 ### Download and install manually
 
@@ -53,7 +53,7 @@ You can install Ghostbird in several ways:
 
 Alternatively, you can:
 
-3. Press :gear: button at the top-right.
+3. Press :gear: button at the top-right in `Add-ons Manager`.
 4. Select `Install Add-on From File...` from the menu.
 5. Select downloaded `.xpi` file.
 
@@ -253,9 +253,9 @@ We need help with:
 
 Please consider the following options:
 
+* [<img src="https://raw.githubusercontent.com/thunderbird/thunderbird-website/refs/heads/master/media/img/thunderbird/thunderbird-256.png" alt="Thunderbird logo" width="48" height="48" align="right">Donate to Thunderbird](https://www.thunderbird.net/en-US/donate/) (It's financially separate from Firefox)
 * [Star the repo](https://github.com/exteditor/ghostbird/#repository-container-header)
 * [Rate the add-on][review]
-* [Donate to Thunderbird](https://www.thunderbird.net/en-US/donate/) (It's financially separate from Firefox)
 * [Donate to @fregante, the author of the original GhostText](https://github.com/sponsors/fregante)
 * [Contribute to the development](#help-wanted)
 
