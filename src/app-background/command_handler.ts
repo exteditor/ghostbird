@@ -17,6 +17,7 @@ export class CommandHandler {
    * @returns A promise that resolves when the command is done
    */
   runCommand(command: CommandId, composeTab: IComposeWindow): Promise<void> {
+    console.info({ command, tabId: composeTab.tabId })
     switch (command) {
       case "start_ghostbird":
         return this.composeActionNotifier.start(composeTab)

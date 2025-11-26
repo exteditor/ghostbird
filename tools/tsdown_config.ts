@@ -72,7 +72,7 @@ const commonConfig = {
       replacePlugin(
         {
           "console.log(": isRelease ? ";(" : 'console.log("[Ghostbird]",',
-          "console.debug(": 'console.debug("[Ghostbird]",',
+          "console.debug(": isRelease ? ";(" : 'console.debug("[Ghostbird]",',
           "console.info(": 'console.info("[Ghostbird]",',
           "console.warn(": 'console.warn("[Ghostbird]",',
           "console.error(": 'console.error("[Ghostbird]",',

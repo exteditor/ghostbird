@@ -78,8 +78,8 @@ The outputs of development and release builds are different in a few ways:
 
 #### Log output
 
-- In a release build, `console.log()` are removed.
-- In a development build, `console.log()` are left in place.
+- In a release build, `console.debug()` and `console.log()` are removed.
+- In a development build, `console.debug()` and `console.log()` are left in place.
 
 Other log levels like `console.info` are not removed in either case.
 
