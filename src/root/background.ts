@@ -35,8 +35,14 @@ const prepareThen: LazyThen<BackgroundEventRouter> = makeLazyThen(async () => {
   return prepareBackgroundRouter({ messenger, heart, optionsSyncCtor, menuItems })
 })
 
+/** Called when the heartbeat alarm fires */
 function onAlarm(alarm: Alarm): void {
   console.debug("beep", alarm)
+}
+
+/** @returns true if the event should be handled; false if not */
+function shouldShowMenu({ contexts }: messenger.menus.OnShowData): boolean {
+  return contexts.includes("compose_action")
 }
 
 messenger.composeAction.onClicked.addListener((tab, _info): Promise<void> | void =>
@@ -61,12 +67,14 @@ messenger.runtime.onMessage.addListener((msg, sender, sendResponse): Promise<voi
 
 messenger.alarms.onAlarm.addListener(onAlarm)
 
-messenger.menus.onShown.addListener((info, tab) =>
-  prepareThen((router) => {
-    console.debug({ info, tab })
+messenger.menus.onShown.addListener(
+  (info, tab) =>
+    shouldShowMenu(info) &&
+    prepareThen((router) => {
+      console.log({ info, tab })
 
-    return router.handleMenuShown(info as MenuShownInfo, tab)
-  }),
+      return router.handleMenuShown(info as MenuShownInfo, tab)
+    }),
 )
 
 messenger.menus.onClicked.addListener(({ menuItemId }, tab): Promise<void> | void =>
