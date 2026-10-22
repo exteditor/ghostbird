@@ -18,7 +18,7 @@ You need at least the following:
 
 - [Git](https://git-scm.com/download)
 - [Thunderbird](https://thunderbird.net/)
-- [Node.js](https://nodejs.org/download/) LTS (v22.18.0 as of writing) or a compatible one that can run Yarn
+- [Node.js](https://nodejs.org/download/) LTS (v24.22.1 as of writing) or a compatible one that can run Yarn
 - Your favorite code editor (e.g., [VSCodium](https://vscodium.com/))
 - [a GitHub account](https://github.com/join)\*
 
