@@ -4,7 +4,7 @@ import * as appOptions from "src/app-options"
 import * as ghosttextAdaptor from "src/ghosttext-adaptor"
 import * as ghosttextRunner from "src/ghosttext-runner"
 import * as ghosttextSession from "src/ghosttext-session"
-import { wireless } from "src/root/util"
+import { type IRegistry, wireless } from "src/root/util"
 import * as thunderbird from "src/thunderbird"
 import * as util from "src/util"
 import { describe, type ExpectStatic, test } from "vitest"
@@ -44,7 +44,7 @@ describe("startup", () => {
 
   test("All collected classes should be resolvable", ({ expect }) => {
     const registry = new TestRegistry(constants)
-    const wire = wireless(Object.values(modules), registry)
+    const wire = wireless(Object.values(modules), registry as IRegistry<Record<string, unknown>>)
 
     // TODO test handling of name clash across modules
     let all = wire(Array, registry.keys()) as unknown[]
@@ -55,7 +55,7 @@ describe("startup", () => {
 
   test("All collected classes refers to given dependencies", async ({ expect }) => {
     const registry = new Map(constants)
-    wireless(Object.values(modules), registry)
+    wireless(Object.values(modules), registry as IRegistry<Record<string, unknown>>)
 
     checkDependencyUsage(expect, registry)
 
@@ -85,15 +85,20 @@ function sliceSourceAfterCtor(ctor: new () => unknown): string {
 /** Checks if all dependencies are used in class */
 function checkDependencyUsage(expect: ExpectStatic, registry: Map<string, AnyEntry>): void {
   for (const [name, [method, arg]] of registry) {
-    if (method !== "prepareOne" || arg.deps.length === 0) {
+    if (method !== "prepareOne") {
       continue
     }
     let { ctor, deps } = arg
+    let depsSize = [...deps].length
+    if (depsSize === 0 || ctor === Array || ctor === Object) {
+      // primitives don't have a body, so we skip them
+      continue
+    }
     let body = sliceSourceAfterCtor(ctor)
     if (!body) {
       throw Error(`Failed to parse the entry. Is it a ES class? [${name}]`)
     }
-    expect(ctor).to.have.lengthOf(deps.length)
+    expect(ctor).to.have.lengthOf(depsSize)
     for (let dep of deps) {
       expect.soft(body).includes(`this.${dep}`, `class ${name} should use this.${dep}`)
     }

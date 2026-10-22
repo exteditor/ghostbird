@@ -38,7 +38,7 @@ export class ButtonMenu implements IButtonMenu {
 
   private async loadInitialized(): Promise<boolean> {
     let got = await this.messenger.storage.session.get("buttonMenuInitialized")
-    console.debug(got)
+    console.info(got)
     let { buttonMenuInitialized } = got
     return Boolean(buttonMenuInitialized)
   }

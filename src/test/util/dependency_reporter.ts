@@ -40,20 +40,10 @@ export function* collectDependencies(registry: Map<string, AnyEntry>): Generator
         yield [k, []]
         break
       case "prepareOne":
-        yield [k, arg.deps]
+        yield [k, [...arg.deps]]
         for (let dep of arg.deps) {
           requiredNames.add(dep)
         }
-        break
-      case "resolveAll":
-        yield [k, [...arg]]
-        for (let dep of arg) {
-          requiredNames.add(dep)
-        }
-        break
-      case "resolveOne":
-        yield [k, [arg]]
-        requiredNames.add(arg)
         break
       default:
         throw Error("unexpected command name")
@@ -92,10 +82,14 @@ function dumpTree(mermaid: Iterable<string>, startupCode: Iterable<string>): str
  */
 function* makeMermaid(modules: AnyModules, deps: [string, string[]][]): Generator<string> {
   yield "flowchart LR"
-  yield* deps.map(([name, deps]) => `${toSnakeCase(name)}["${findModule(modules, name, deps)}<br>${name}"]`)
-  yield* deps.flatMap(([name, deps]) =>
-    deps.length === 0 ? [] : [`${toSnakeCase(name)} --> ${deps.map(toSnakeCase).join(" & ")}`],
-  )
+  for (const [name, required] of deps) {
+    yield `${toSnakeCase(name)}["${findModule(modules, name, required)}<br>${name}"]`
+  }
+  for (const [name, required] of deps) {
+    if (required.length !== 0) {
+      yield `${toSnakeCase(name)} --> ${required.map(toSnakeCase).join(" & ")}`
+    }
+  }
 }
 
 /** Determine which module a name belongs to. */
@@ -147,25 +141,30 @@ function* dumpStartupCode(
 function* dumpStartupBody(depList: [string, string[]][], registry: Map<string, AnyEntry>): Generator<string> {
   let depMap = new Map(depList)
   for (const name of caseInsensitiveToposort(depList).reverse()) {
-    let [method] = registry.get(name) ?? []
+    let entry = registry.get(name) ?? []
     let required = depMap.get(name)?.map(toCamelCase) ?? []
     let camel = toCamelCase(name)
 
-    switch (method) {
+    switch (entry[0]) {
       case "const":
         yield `  const ${camel} = consts.${camel}`
         break
-      case "prepareOne":
-        yield `  const ${camel} = new ${name}(${required.join(", ")})`
+      case "prepareOne": {
+        yield `  const ${camel} = ${makeConstruction(name, required, entry[1])}`
         break
-      case "resolveAll":
-        yield `  const ${camel} = [${required.join(", ")}]`
-        break
-      case "resolveOne":
-        yield `  const ${camel} = ${toCamelCase(required[0] ?? "")}`
-        break
+      }
       default:
         throw Error("unexpected command name")
     }
+  }
+}
+
+function makeConstruction(name: string, required: string[], { ctor }: { ctor: new () => unknown }): string {
+  if (ctor === Object) {
+    return `${required[0]}`
+  } else if (ctor === Array) {
+    return `[${required.join(", ")}]`
+  } else {
+    return `new ${name}(${required.join(", ")})`
   }
 }

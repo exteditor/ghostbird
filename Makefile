@@ -35,7 +35,7 @@ fix:
 js: .yarn
 	$(YARN) run build-js
 
-start: js
+start: js .web-ext-config.mjs
 	$(YARN) run start
 
 test: js
@@ -59,14 +59,14 @@ build/:
 build/doc: js
 	$(YARN) run doc
 
-.vscode/settings.json:
-	$(CP) .vscode/settings.example.json .vscode/settings.json
+.vscode/settings.json: | .vscode/settings.example.json
+	$(CP) .vscode/settings.example.json $@
 
-.vscode/launch.json:
-	$(CP) .vscode/launch.example.json .vscode/launch.json
+.vscode/launch.json: | .vscode/launch.example.json
+	$(CP) .vscode/launch.example.json $@
 
-.vscode/tasks.json:
-	$(CP) .vscode/tasks.example.json .vscode/tasks.json
+.vscode/tasks.json: | .vscode/tasks.example.json
+	$(CP) .vscode/tasks.example.json $@
 
-.web-ext-config.mjs:
-	$(CP) .web-ext-config.example.mjs .web-ext-config.mjs
+.web-ext-config.mjs: | .web-ext-config.example.mjs
+	$(CP) .web-ext-config.example.mjs $@
