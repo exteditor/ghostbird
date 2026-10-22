@@ -24,26 +24,28 @@
 import { existsSync } from "node:fs"
 import { join } from "node:path"
 import { env } from "node:process"
-import { replacePlugin } from "rolldown/experimental"
-import type { Options, UserConfig } from "tsdown"
-import { barrelsby } from "./barrelsby"
-import { codecov } from "./codecov"
-import { generateLocaleMessages } from "./generate_locale_messages"
-import { generateManifest } from "./generate_manifest"
-import { testSanity } from "./test_sanity"
-import { chunkFileNames, makeAbsoluteSourcePath, makeRelativeSourcePath } from "./tsdown_path"
-import { typecheckWithTsc } from "./typecheck_with_tsc"
+import type { Plugin } from "rolldown"
+import { replacePlugin } from "rolldown/plugins"
+import type { UserConfig } from "tsdown"
+import { barrelsby } from "./barrelsby.ts"
+import { codecov } from "./codecov.ts"
+import { generateLocaleMessages } from "./generate_locale_messages.ts"
+import { generateManifest } from "./generate_manifest.ts"
+import { testSanity } from "./test_sanity.ts"
+import { chunkFileNames, makeAbsoluteSourcePath, makeRelativeSourcePath } from "./tsdown_path.ts"
+import { typecheckWithTsc } from "./typecheck_with_tsc.ts"
 
 // biome-ignore lint/style/noDefaultExport: tsdown requires it
-export default (): UserConfig => [
+export default (): UserConfig[] => [
   { ...commonConfig, ...esmConfig },
   { ...commonConfig, ...iifeConfig },
 ]
 
-const isRelease: boolean = env.CI === "true" || existsSync(join(__dirname, "..", "ext", "manifest.json"))
+const isRelease: boolean = env.CI === "true" || existsSync(join(import.meta.dirname, "..", "ext", "manifest.json"))
 
 // biome-ignore lint/nursery/useExplicitType: we want tsc to infer it
 const commonConfig = {
+  cwd: join(import.meta.dirname, ".."),
   outDir: "dist/ext/",
   tsconfig: "src/root/tsconfig.json",
   ignoreWatch: [/[/](?:[.]|build[/]|dist[/])/i, /index[.]ts$/i],
@@ -54,7 +56,10 @@ const commonConfig = {
   // We don't remove whitespaces for people like me who enjoy unpacking xpis and reading the content.
   // We still bundle because it reduces the number of files to check.
   minify: "dce-only",
-  noExternal: /(?:)/,
+  deps: {
+    alwaysBundle: /(?:)/,
+    onlyBundle: false,
+  },
   define: {
     // Remove in-source tests
     "import.meta.vitest": "undefined",
@@ -62,37 +67,20 @@ const commonConfig = {
   report: {
     gzip: false,
   },
-  outputOptions: {
-    entryFileNames: "js/[name].js",
-    intro: "'use strict';",
-    sourcemapPathTransform: isRelease ? makeRelativeSourcePath : makeAbsoluteSourcePath,
-    chunkFileNames,
-    plugins: [
-      // Adjust console logs
-      replacePlugin(
-        {
-          "console.log(": isRelease ? ";(" : 'console.log("[Ghostbird]",',
-          "console.debug(": isRelease ? ";(" : 'console.debug("[Ghostbird]",',
-          "console.info(": 'console.info("[Ghostbird]",',
-          "console.warn(": 'console.warn("[Ghostbird]",',
-          "console.error(": 'console.error("[Ghostbird]",',
-        },
-        {
-          delimiters: ["\\b", '(?!"\\[Ghostbird\\])'],
-        },
-      ),
-    ],
-    advancedChunks: {
-      groups: [
-        // Separate library files
-        {
-          test: "node_modules",
-          name: (moduleId: string): string => moduleId,
-        },
-      ],
-    },
+} satisfies UserConfig
+
+const replace: Plugin = replacePlugin(
+  {
+    "console.log(": isRelease ? ";(" : 'console.log("[Ghostbird]",',
+    "console.debug(": isRelease ? ";(" : 'console.debug("[Ghostbird]",',
+    "console.info(": 'console.info("[Ghostbird]",',
+    "console.warn(": 'console.warn("[Ghostbird]",',
+    "console.error(": 'console.error("[Ghostbird]",',
   },
-} satisfies Options
+  {
+    delimiters: ["\\b", '(?!"\\[Ghostbird\\])'],
+  },
+)
 
 // biome-ignore lint/nursery/useExplicitType: we want tsc to infer it
 const esmConfig = {
@@ -104,8 +92,10 @@ const esmConfig = {
   ],
   format: "es",
   // Add non-js files
-  copy: { from: "ext", to: "dist/ext" },
+  copy: "ext/*",
   plugins: [
+    // Adjust console logs
+    replace,
     // Generate index.ts
     barrelsby(),
     // Run basic tests
@@ -115,11 +105,28 @@ const esmConfig = {
     // Generate manifest.json
     generateManifest(isRelease ? { env } : undefined),
     // Generate _locales/*/messages.json
-    generateLocaleMessages({ path: "./locales.toml" }),
+    generateLocaleMessages({ path: join(import.meta.dirname, "../locales.toml") }),
     // Upload bundle size info to Codecov
     isRelease ? codecov({ env, bundleName: "background" }) : null,
   ],
-} satisfies Options
+  outputOptions: {
+    entryFileNames: "js/[name].js",
+    sourcemapPathTransform: isRelease ? makeRelativeSourcePath : makeAbsoluteSourcePath,
+    chunkFileNames,
+    codeSplitting: {
+      groups: [
+        // Separate library files
+        {
+          test: "node_modules",
+          name(id: string): string {
+            const libname = id.match(/\/node_modules\/((?:@[^/]+\/)?[^/]+)\//)?.[1]?.replace("/", "-")
+            return libname ? `lib-${libname}` : id
+          },
+        },
+      ],
+    },
+  },
+} satisfies UserConfig
 
 // biome-ignore lint/nursery/useExplicitType: we want tsc to infer it
 const iifeConfig = {
@@ -130,10 +137,18 @@ const iifeConfig = {
   ],
   format: "iife",
   plugins: [
+    // Adjust console logs
+    replace,
     // Upload bundle size info to Codecov
     isRelease ? codecov({ env, bundleName: "compose" }) : null,
   ],
-} satisfies Options
+  outputOptions: {
+    entryFileNames: "js/[name].js",
+    intro: "'use strict';",
+    sourcemapPathTransform: isRelease ? makeRelativeSourcePath : makeAbsoluteSourcePath,
+    chunkFileNames,
+  },
+} satisfies UserConfig
 
 // Check that the keys are disjoint
 type Test<A, B> = Extract<A, B> extends never ? "ok" : ["Keys overlap", A & B]

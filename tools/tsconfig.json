@@ -12,6 +12,8 @@
   "compilerOptions": {
     "module": "preserve",
     "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+    "emitDeclarationOnly": true,
     "types": [
       "node"
     ],
