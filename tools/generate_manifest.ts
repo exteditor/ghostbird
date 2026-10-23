@@ -1,7 +1,7 @@
 import { gitDescribe } from "git-describe"
 import type { EmittedAsset, Plugin } from "rolldown"
-import manifestTemplate from "../manifest_template.json"
-import pkg from "../package.json"
+import manifestTemplate from "../manifest_template.json" with { type: "json" }
+import pkg from "../package.json" with { type: "json" }
 
 type VersionInfo = { version: string; sha?: string | undefined }
 

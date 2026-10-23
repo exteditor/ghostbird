@@ -8,7 +8,7 @@
   "license": "MPL-2.0 OR GPL-3.0-or-later",
   "private": true,
   "type": "module",
-  "packageManager": "yarn@4.10.3",
+  "packageManager": "yarn@4.18.1",
   "engines": {
     "thunderbird": ">= 128"
   },
@@ -81,14 +81,14 @@
     "git-describe": "^4.1.1",
     "glob": "^10",
     "jsdom": "^27.0.1",
-    "rolldown": "latest",
+    "rolldown": "^1.2.14",
     "toposort-class": "^1.0.1",
-    "tsdown": "^0.15.9",
-    "typedoc": "^0.28.12",
+    "tsdown": "^0.23.1",
+    "typedoc": "^0.28.20",
     "typedoc-plugin-mdn-links": "^5.0.9",
-    "typescript": "^5.9.3",
+    "typescript": "6",
     "vitest": "^3.2.4",
-    "web-ext": "^9.0.0"
+    "web-ext": "^10.8.0"
   },
   "peerDependencies": {
     "@vitest/ui": "*"
