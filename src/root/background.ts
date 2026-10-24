@@ -10,9 +10,14 @@ import { type LazyThen, makeLazyThen } from "src/util/lazy_then"
 console.info("starting", import.meta.url)
 
 const prepareThen: LazyThen<BackgroundEventRouter> = makeLazyThen(async () => {
-  let [{ prepareBackgroundRouter, AlarmHeart }, { default: optionsSyncCtor }] = await Promise.all([
+  let [
+    { prepareBackgroundRouter, AlarmHeart },
+    { default: optionsSyncCtor },
+    { DEFAULT_STORED_OPTIONS: storedOptionsDefaults },
+  ] = await Promise.all([
     import("./startup/startup_background"),
     import("webext-options-sync"),
+    import("src/ghosttext-adaptor/client_options_loader"),
   ])
   /** Menu items to be shown in the context menu. */
   let menuItems: ReadonlyArray<MenuItem> = [
@@ -32,7 +37,7 @@ const prepareThen: LazyThen<BackgroundEventRouter> = makeLazyThen(async () => {
   // Set the ready flag that promises the alarm event handler is registered
   heart.ready(onAlarm)
 
-  return prepareBackgroundRouter({ messenger, heart, optionsSyncCtor, menuItems })
+  return prepareBackgroundRouter({ messenger, heart, optionsSyncCtor, menuItems, storedOptionsDefaults })
 })
 
 /** Called when the heartbeat alarm fires */

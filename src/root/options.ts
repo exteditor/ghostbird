@@ -1,6 +1,7 @@
 /** @file Entrypoint of the options page */
 
 import { GhostbirdOptionsElement, OptionsEventRouter } from "src/app-options"
+import { DEFAULT_STORED_OPTIONS } from "src/ghosttext-adaptor"
 import { default as optionsSyncCtor } from "webext-options-sync"
 import { startupOptions } from "./startup/startup_options"
 
@@ -8,6 +9,7 @@ import { startupOptions } from "./startup/startup_options"
 function prepareRouter(): OptionsEventRouter {
   const startup = startupOptions({
     optionsSyncCtor,
+    storedOptionsDefaults: DEFAULT_STORED_OPTIONS,
   })
   return startup(OptionsEventRouter)
 }

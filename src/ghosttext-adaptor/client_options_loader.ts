@@ -1,5 +1,10 @@
 import type { ClientOptions, IClientOptionsLoader } from "src/ghosttext-runner/api"
-import type { IManifestInfo, IStoredOptionsLoader } from "./api"
+import type { IManifestInfo, IStoredOptionsLoader, StoredOptions } from "./api"
+
+export const DEFAULT_STORED_OPTIONS: StoredOptions = {
+  serverPort: 4001,
+  enableNotifications: true,
+} as const
 
 export class ClientOptionsLoader implements IClientOptionsLoader {
   static isSingleton = true
@@ -29,12 +34,15 @@ if (import.meta.vitest) {
   describe(ClientOptionsLoader, () => {
     it("should build a ClientOption from storage and manifest info correctly", async () => {
       const storedOptionsLoader = {
-        load: vi.fn().mockResolvedValue({
-          serverPort: 1234,
-          enableNotifications: true,
-        }),
-      }
-      const manifestInfo = { getId: vi.fn().mockReturnValue("@test.extension") }
+        load: () =>
+          Promise.resolve({
+            serverPort: 1234,
+            enableNotifications: true,
+          }),
+      } satisfies IStoredOptionsLoader
+      const manifestInfo = {
+        getId: () => "@test.extension",
+      } satisfies IManifestInfo
       const sut = new ClientOptionsLoader(storedOptionsLoader, manifestInfo)
 
       await expect(sut.load()).resolves.deep.equals({

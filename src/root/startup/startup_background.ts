@@ -17,6 +17,7 @@ export type BackgroundConstants = {
   messenger: typeof globalThis.messenger
   heart: IHeart
   optionsSyncCtor: typeof OptionsSync
+  storedOptionsDefaults: adaptor.StoredOptions
   menuItems: ReadonlyArray<MenuItem>
 }
 
