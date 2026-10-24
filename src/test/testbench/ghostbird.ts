@@ -59,12 +59,13 @@ function makeMockedBackgroundInjector(
   return injector
 }
 
-function makeMockedComposeInjector(): WirelessInjector<ComposeCatalog> {
+function makeMockedComposeInjector(
+  consts: Pick<ComposeConstants, "body" | "selection">,
+): WirelessInjector<ComposeCatalog> {
   let registry = makeRegistry<Partial<ComposeCatalog>>({
     messenger: Symbol("messenger") as unknown as typeof globalThis.messenger,
-    body: document.body,
-    selection: getSelection() as Selection,
     domParser: new DOMParser(),
+    ...consts,
   } satisfies ComposeConstants)
 
   return wireless([appCompose], registry)
@@ -145,18 +146,19 @@ class LoggingGhostTextClient implements GhostTextClient {
   }
 }
 
+/** BackgroundEventRouter and ComposeEventRouter bundled together for testing */
 export class Ghostbird {
-  readonly composeBody: HTMLBodyElement
   private readonly backgroundRouter: BackgroundEventRouter
   private readonly composeRouter: ComposeEventRouter
   private readonly serverSocket: Promise<IMessagePort<string, string>>
   private readonly tasks: Promise<void>[] = []
+  readonly composeBody: HTMLElement
 
-  constructor() {
+  constructor(consts: Pick<ComposeConstants, "body" | "selection">) {
     let { promise, resolve } = Promise.withResolvers<IMessagePort<string, string>>()
     this.serverSocket = promise
 
-    let composeInjector = makeMockedComposeInjector()
+    let composeInjector = makeMockedComposeInjector(consts)
     let mockedThunderbird = makeMockedThunderbird(
       () => {
         let [composeToBackground, backgroundToCompose]: [IGhostClientPort, IGhostServerPort] = promisifyMessageChannel(
@@ -176,7 +178,7 @@ export class Ghostbird {
     )
     let backgroundInjector = makeMockedBackgroundInjector(mockedThunderbird)
 
-    this.composeBody = composeInjector(Object, ["body"]) as unknown as HTMLBodyElement
+    this.composeBody = consts.body
     this.composeRouter = composeInjector(ComposeEventRouter)
     this.backgroundRouter = backgroundInjector(BackgroundEventRouter)
   }
@@ -209,5 +211,6 @@ export class Ghostbird {
     let s = await this.serverSocket
     s.close()
     await Promise.all(this.tasks)
+    this.tasks.length = 0
   }
 }

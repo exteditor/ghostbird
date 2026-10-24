@@ -53,6 +53,7 @@ js & copied_ext_files & messages & manifest --> web_ext[["web-ext"]] --> xpi["Ma
   - Adjusting source maps.
   - Copying static assets from `ext/` into `dist/ext/`.
   - Compiling bundled JavaScript files into `dist/ext/`.
+  - Bundling the testbench demo page into `dist/testbench/` in development builds (see [Testbench](#testbench)).
 - Running `yarn build-xpi` creates a zip archive named `dist/ghostbird-{version}.xpi`.
    - [The `web-ext` tool](https://github.com/mozilla/web-ext#web-ext) does the actual work.
 - The usual `yarn build`, which is used by the CI, runs both of the above after running the linter and tests.
@@ -82,6 +83,13 @@ The outputs of development and release builds are different in a few ways:
 - In a development build, `console.debug()` and `console.log()` are left in place.
 
 Other log levels like `console.info` are not removed in either case.
+
+## Testbench
+
+- Ghostbird has a demo page ([`tools/testbench.html`](../tools/testbench.html)) that lets you try the extension in a browser without Thunderbird, by running the same logic against mocked Thunderbird APIs.
+- The `testbenchConfig` in [`tsdown_config.ts`](../tools/tsdown_config.ts) bundles `src/test/testbench/main.ts` into `dist/testbench/main.js`.
+   - It is only included in development builds.
+- To use it, run `yarn build-js` (or `yarn watch`), launch your favorite local http server, and open say `http://localhost:8080/tools/testbench.html` in a browser.
 
 ## Rollup plugins
 

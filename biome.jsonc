@@ -5,9 +5,8 @@
       "**/*.json",
       "**/*.js",
       "**/*.ts",
+      "**/*.html",
       "ext/**/*.css",
-      "ext/**/*.html",
-      ".github/site/**/*.html",
       ".github/site/**/*.mjs",
       "!**/*.nolint.*"
     ]
