@@ -4,6 +4,7 @@ import type { IManifestInfo, IStoredOptionsLoader, StoredOptions } from "./api"
 export const DEFAULT_STORED_OPTIONS: StoredOptions = {
   serverPort: 4001,
   enableNotifications: true,
+  ignoreEmptyBodyUpdates: false,
 } as const
 
 export class ClientOptionsLoader implements IClientOptionsLoader {
@@ -15,7 +16,7 @@ export class ClientOptionsLoader implements IClientOptionsLoader {
   ) {}
 
   async load(): Promise<ClientOptions> {
-    let { serverPort, enableNotifications } = await this.storedOptionsLoader.load()
+    let { serverPort, enableNotifications, ignoreEmptyBodyUpdates } = await this.storedOptionsLoader.load()
     const extensionId = this.manifestInfo.getId()
     let serverUrl = new URL(`http://localhost:${serverPort}/`)
     let { host } = new URL(`extension://${extensionId}.localhost`)
@@ -24,6 +25,7 @@ export class ClientOptionsLoader implements IClientOptionsLoader {
       serverUrl,
       clientHostName: host,
       enableNotifications,
+      ignoreEmptyBodyUpdates,
     }
   }
 }
@@ -38,6 +40,7 @@ if (import.meta.vitest) {
           Promise.resolve({
             serverPort: 1234,
             enableNotifications: true,
+            ignoreEmptyBodyUpdates: true,
           }),
       } satisfies IStoredOptionsLoader
       const manifestInfo = {
@@ -49,6 +52,7 @@ if (import.meta.vitest) {
         serverUrl: new URL("http://localhost:1234/"),
         clientHostName: "test.extension.localhost",
         enableNotifications: true,
+        ignoreEmptyBodyUpdates: true,
       })
     })
   })

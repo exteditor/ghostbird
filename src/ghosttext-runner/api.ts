@@ -34,6 +34,8 @@ export type ClientOptions = {
   readonly serverUrl: URL
   /** Show notifications on connect/disconnect events if true */
   readonly enableNotifications: boolean
+  /** Ignore empty body updates sent by the server before closing */
+  readonly ignoreEmptyBodyUpdates: boolean
 }
 
 /**

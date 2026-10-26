@@ -56,6 +56,9 @@ label {
   &[for="enableNotifications"]::before {
     content: "__MSG_options_enable_notifications__";
   }
+  &[for="ignoreEmptyBodyUpdates"]::before {
+    content: "__MSG_options_ignore_empty_body_updates__";
+  }
 }
 .progress {
   &.saved::before {
