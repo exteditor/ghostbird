@@ -10,8 +10,15 @@ import { type LazyThen, makeLazyThen } from "src/util/lazy_then"
 console.info("starting", import.meta.url)
 
 const prepareThen: LazyThen<BackgroundEventRouter> = makeLazyThen(async () => {
-  let [{ prepareBackgroundRouter, AlarmHeart }, { default: optionsSyncCtor }] = await Promise.all([
+  let [
+    { prepareBackgroundRouter },
+    { AlarmHeart },
+    { DEFAULT_STORED_OPTIONS: storedOptionsDefaults },
+    { default: optionsSyncCtor },
+  ] = await Promise.all([
     import("./startup/startup_background"),
+    import("src/thunderbird/background_util/alarm_heart"),
+    import("src/ghosttext-adaptor/client_options_loader"),
     import("webext-options-sync"),
   ])
   /** Menu items to be shown in the context menu. */
@@ -32,7 +39,7 @@ const prepareThen: LazyThen<BackgroundEventRouter> = makeLazyThen(async () => {
   // Set the ready flag that promises the alarm event handler is registered
   heart.ready(onAlarm)
 
-  return prepareBackgroundRouter({ messenger, heart, optionsSyncCtor, menuItems })
+  return prepareBackgroundRouter({ messenger, heart, optionsSyncCtor, menuItems, storedOptionsDefaults })
 })
 
 /** Called when the heartbeat alarm fires */

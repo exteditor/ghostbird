@@ -10,15 +10,15 @@ export class OptionsStore implements IStoredOptionsLoader, IOptionsStore {
 
   private optionsSync: OptionsSync<StoredOptions> | undefined
 
-  constructor(private readonly optionsSyncCtor: typeof OptionsSync) {}
+  constructor(
+    private readonly optionsSyncCtor: typeof OptionsSync,
+    private readonly storedOptionsDefaults: StoredOptions,
+  ) {}
 
   private get options(): OptionsSync<StoredOptions> {
     this.optionsSync ??= new this.optionsSyncCtor({
       storageType: "local",
-      defaults: {
-        serverPort: 4001,
-        enableNotifications: true,
-      },
+      defaults: this.storedOptionsDefaults,
     })
     return this.optionsSync
   }
