@@ -99,6 +99,7 @@ function makeMockedThunderbird(
         Promise.resolve({
           serverPort: 12345,
           enableNotifications: false,
+          ignoreEmptyBodyUpdates: false,
         } as StoredOptions),
     },
     manifestInfo: {
