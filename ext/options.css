@@ -59,6 +59,9 @@ label {
   &[for="ignoreEmptyBodyUpdates"]::before {
     content: "__MSG_options_ignore_empty_body_updates__";
   }
+  &[for="editHtmlAsIs"]::before {
+    content: "__MSG_options_edit_html_as_is__";
+  }
 }
 .progress {
   &.saved::before {

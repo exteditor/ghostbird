@@ -283,6 +283,37 @@ vi = "Bỏ qua cập nhật nội dung trống (cách khắc phục tạm thời
 zh = "忽略空正文更新（临时解决方法）"
 zh-tw = "忽略空白內文更新（臨時解決方法）"
 
+[options_edit_html_as_is]
+# Description of the option item for editing HTML emails as-is.
+ar = "تعديل HTML كما هو"
+be = "Рэдагаваць HTML як ёсць"
+ca = "Edita l'HTML tal qual"
+cs = "Upravit HTML tak, jak je"
+de = "HTML unverändert bearbeiten"
+el = "Επεξεργασία HTML ως έχει"
+en = "Edit HTML as-is"
+es = "Editar HTML tal cual"
+fi = "Muokkaa HTML:ää sellaisenaan"
+fr = "Éditer l'HTML tel quel"
+hu = "HTML szerkesztése eredeti formájában"
+id = "Edit HTML apa adanya"
+it = "Modifica HTML così com'è"
+ja = "HTMLをそのまま編集する"
+ko = "HTML 있는 그대로 편집"
+nl = "HTML bewerken zoals het is"
+pl = "Edytuj HTML tak, jak jest"
+pt = "Editar HTML tal como está"
+pt-br = "Editar HTML como está"
+ro = "Editați HTML-ul așa cum este"
+ru = "Редактировать HTML как есть"
+sk = "Upraviť HTML tak, ako je"
+th = "แก้ไข HTML ตามที่เป็นอยู่"
+tr = "HTML'yi olduğu gibi düzenle"
+uk = "Редагувати HTML як є"
+vi = "Chỉnh sửa HTML như nguyên trạng"
+zh = "按原样编辑 HTML"
+zh-tw = "按原樣編輯 HTML"
+
 [options_saved]
 # Message shown when the options has been saved successfully.
 ar = "تم الحفظ"

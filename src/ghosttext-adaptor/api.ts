@@ -85,12 +85,22 @@ export type StoredOptions = {
   enableNotifications: boolean
   /** Ignore all empty body updates sent by the server if true */
   ignoreEmptyBodyUpdates: boolean
+  /** Edit HTML emails as-is */
+  editHtmlAsIs: boolean
 }
 
 /** Manages access to options */
 export interface IStoredOptionsLoader {
   /** Loads options from storage */
   load(): Promise<StoredOptions>
+}
+
+/** Utilities to convert between HTML and plain text */
+export interface ITextUtil {
+  /** Converts an HTML body to plain text */
+  convertToPlainText(body: string): Promise<string>
+  /** Encodes text so it is safe to embed in HTML */
+  encode(text: string): string
 }
 
 /** Message sent from  the background script to the compose window */

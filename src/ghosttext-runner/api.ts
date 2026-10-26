@@ -37,6 +37,8 @@ export type ClientOptions = {
   /** Ignore empty body updates sent by the server before closing */
   /** Drop empty body updates from the server, e.g. the empty update VS Code sends on close */
   readonly ignoreEmptyBodyUpdates: boolean
+  /** Edit HTML emails as-is */
+  readonly editHtmlAsIs: boolean
 }
 
 /**

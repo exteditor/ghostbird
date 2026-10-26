@@ -9,6 +9,7 @@ import type {
   IManifestInfo,
   INotificationTray,
   IStoredOptionsLoader,
+  ITextUtil,
   IWebClient,
   StoredOptions,
 } from "src/ghosttext-adaptor"
@@ -32,6 +33,7 @@ type MockedThunderbirdCatalog = {
   manifestInfo: IManifestInfo
   notificationTray: INotificationTray
   storedOptionsLoader: IStoredOptionsLoader
+  textUtil: ITextUtil
   webClient: IWebClient
 }
 
@@ -100,8 +102,13 @@ function makeMockedThunderbird(
           serverPort: 12345,
           enableNotifications: false,
           ignoreEmptyBodyUpdates: false,
+          editHtmlAsIs: false,
         } as StoredOptions),
     },
+    textUtil: {
+      convertToPlainText: async (body: string): Promise<string> => body,
+      encode: (text: string): string => text,
+    } satisfies ITextUtil,
     manifestInfo: {
       getId: () => "test-id",
     },

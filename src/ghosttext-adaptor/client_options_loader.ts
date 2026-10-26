@@ -5,6 +5,7 @@ export const DEFAULT_STORED_OPTIONS: StoredOptions = {
   serverPort: 4001,
   enableNotifications: true,
   ignoreEmptyBodyUpdates: false,
+  editHtmlAsIs: false,
 } as const
 
 export class ClientOptionsLoader implements IClientOptionsLoader {
@@ -16,7 +17,8 @@ export class ClientOptionsLoader implements IClientOptionsLoader {
   ) {}
 
   async load(): Promise<ClientOptions> {
-    let { serverPort, enableNotifications, ignoreEmptyBodyUpdates } = await this.storedOptionsLoader.load()
+    let { serverPort, enableNotifications, ignoreEmptyBodyUpdates, editHtmlAsIs } =
+      await this.storedOptionsLoader.load()
     const extensionId = this.manifestInfo.getId()
     let serverUrl = new URL(`http://localhost:${serverPort}/`)
     let { host } = new URL(`extension://${extensionId}.localhost`)
@@ -26,6 +28,7 @@ export class ClientOptionsLoader implements IClientOptionsLoader {
       clientHostName: host,
       enableNotifications,
       ignoreEmptyBodyUpdates,
+      editHtmlAsIs,
     }
   }
 }
@@ -41,6 +44,7 @@ if (import.meta.vitest) {
             serverPort: 1234,
             enableNotifications: true,
             ignoreEmptyBodyUpdates: true,
+            editHtmlAsIs: true,
           }),
       } satisfies IStoredOptionsLoader
       const manifestInfo = {
@@ -53,6 +57,7 @@ if (import.meta.vitest) {
         clientHostName: "test.extension.localhost",
         enableNotifications: true,
         ignoreEmptyBodyUpdates: true,
+        editHtmlAsIs: true,
       })
     })
   })
