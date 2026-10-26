@@ -10,7 +10,7 @@
   "type": "module",
   "packageManager": "yarn@4.18.1",
   "engines": {
-    "thunderbird": ">= 128"
+    "thunderbird": ">= 140"
   },
   "homepage": "https://exteditor.github.io/ghostbird/",
   "bugs": "https://github.com/exteditor/ghostbird/issues/",
