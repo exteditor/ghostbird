@@ -11,8 +11,6 @@ import { wireless } from "src/root/util/wireless"
 import * as thunderbirdBackground from "src/thunderbird/background_util"
 import type OptionsSync from "webext-options-sync"
 
-export { AlarmHeart } from "src/thunderbird/background_util/alarm_heart"
-
 export type BackgroundConstants = {
   messenger: typeof globalThis.messenger
   heart: IHeart

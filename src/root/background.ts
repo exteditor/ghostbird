@@ -11,13 +11,15 @@ console.info("starting", import.meta.url)
 
 const prepareThen: LazyThen<BackgroundEventRouter> = makeLazyThen(async () => {
   let [
-    { prepareBackgroundRouter, AlarmHeart },
-    { default: optionsSyncCtor },
+    { prepareBackgroundRouter },
+    { AlarmHeart },
     { DEFAULT_STORED_OPTIONS: storedOptionsDefaults },
+    { default: optionsSyncCtor },
   ] = await Promise.all([
     import("./startup/startup_background"),
-    import("webext-options-sync"),
+    import("src/thunderbird/background_util/alarm_heart"),
     import("src/ghosttext-adaptor/client_options_loader"),
+    import("webext-options-sync"),
   ])
   /** Menu items to be shown in the context menu. */
   let menuItems: ReadonlyArray<MenuItem> = [
