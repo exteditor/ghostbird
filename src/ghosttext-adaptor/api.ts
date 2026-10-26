@@ -83,7 +83,7 @@ export type StoredOptions = {
   serverPort: number
   /** Shows notifications when connecting or disconnecting from GhostText if true */
   enableNotifications: boolean
-  /** Ignore empty body updates sent by the server before closing */
+  /** Ignore all empty body updates sent by the server if true */
   ignoreEmptyBodyUpdates: boolean
 }
 
