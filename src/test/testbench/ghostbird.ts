@@ -41,6 +41,7 @@ function makeMockedBackgroundInjector(
   let registry = makeRegistry<Partial<BackgroundCatalog & { ghostTextClient: GhostTextClient }>>({
     messenger: Symbol("messenger") as unknown as typeof globalThis.messenger,
     optionsSyncCtor: Symbol("optionsSyncCtor") as unknown as typeof OptionsSync,
+    storedOptionsDefaults: Symbol("storedOptionsDefaults") as unknown as StoredOptions,
     menuItems: [
       {
         icon: "",

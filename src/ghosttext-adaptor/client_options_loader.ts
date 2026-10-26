@@ -29,7 +29,7 @@ export class ClientOptionsLoader implements IClientOptionsLoader {
 }
 
 if (import.meta.vitest) {
-  const { describe, expect, it, vi } = import.meta.vitest
+  const { describe, expect, it } = import.meta.vitest
 
   describe(ClientOptionsLoader, () => {
     it("should build a ClientOption from storage and manifest info correctly", async () => {

@@ -40,6 +40,7 @@ describe("startup", () => {
     ["selection", ["const", Symbol("selection")]],
     ["heart", ["const", Symbol("heart")]],
     ["optionsSyncCtor", ["const", Symbol("optionsSyncCtor")]],
+    ["storedOptionsDefaults", ["const", Symbol("storedOptionsDefaults")]],
   ]
 
   test("All collected classes should be resolvable", ({ expect }) => {
