@@ -3,7 +3,7 @@
 // See: https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/#use-a-custom-profile
 export default {
   run: {
-    // You can use flatpak by specifying "flatpak:org.mozilla.Thunderbird"
+    // You can use flatpak by specifying "flatpak:org.mozilla.thunderbird_esr"
     firefox: "/usr/bin/thunderbird",
     firefoxProfile: import.meta.dirname + "/.cache/thunderbird-testing-profile/",
     profileCreateIfMissing: true,
