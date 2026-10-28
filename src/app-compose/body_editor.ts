@@ -7,7 +7,7 @@ export class BodyEditor {
   ) {}
 
   getBody(isPlainText: boolean): string {
-    return (isPlainText ? this.body.textContent : this.body.innerHTML) ?? ""
+    return (isPlainText ? this.body.innerText : this.body.innerHTML) ?? ""
   }
 
   applyEdit(body: string, isPlainText: boolean): void {
