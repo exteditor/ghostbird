@@ -5,7 +5,7 @@ describe("Ghostbird", () => {
   it("should send initial text to server when started from toolbar", async ({ expect }) => {
     const sut = makeGhostbird()
     sut.startFromToolbar({ id: 42 })
-    sut.composeBody.textContent = "hello"
+    sut.composeBody.innerText = "hello"
 
     let sent = await sut.sendsToServer()
     await sut.closeSession()
@@ -22,7 +22,7 @@ describe("Ghostbird", () => {
   it("should apply text from server to the compose body", async ({ expect }) => {
     const sut = makeGhostbird()
     sut.startFromToolbar({ id: 42 })
-    sut.composeBody.textContent = "hello"
+    sut.composeBody.innerText = "hello"
 
     await sut.sendsToServer()
     await sut.receives("hello, world")

@@ -10,7 +10,7 @@
   "type": "module",
   "packageManager": "yarn@4.18.1",
   "engines": {
-    "thunderbird": ">= 128"
+    "thunderbird": ">= 140"
   },
   "homepage": "https://exteditor.github.io/ghostbird/",
   "bugs": "https://github.com/exteditor/ghostbird/issues/",
@@ -80,6 +80,7 @@
     "barrelsby": "^2.8.1",
     "git-describe": "^4.1.1",
     "glob": "^10",
+    "html-entities": "^2.6.0",
     "jsdom": "^27.0.1",
     "rolldown": "^1.2.14",
     "toposort-class": "^1.0.1",
