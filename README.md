@@ -153,34 +153,31 @@ See also [a list of milestones][milestones].
 
 * v0.3.0 - Released
 
-  * :nest_with_eggs: [Show notifications](https://github.com/exteditor/ghostbird/issues/24)
-  * :nest_with_eggs: [Continue i18n (Add more languages)](https://github.com/exteditor/ghostbird/issues/26)
+  * :white_check_mark: [Show notifications](https://github.com/exteditor/ghostbird/issues/24)
+  * :white_check_mark: [Continue i18n (Add more languages)](https://github.com/exteditor/ghostbird/issues/26)
 
-* v0.4.0 - Current
+* v0.4.0 - Released
 
-  * :nest_with_eggs: [Add a way to disconnect using only a mouse](https://github.com/exteditor/ghostbird/issues/30)
+  * :white_check_mark: [Add a way to disconnect using only a mouse](https://github.com/exteditor/ghostbird/issues/30)
 
-* v0.5.0 - 2025 Q4
+* v0.5.0 - Released
 
-  * :nest_with_eggs: [Website with some screenshots](https://github.com/exteditor/ghostbird/issues/5)
-  * :construction: [Edit a HTML email as if it were a plain text email](https://github.com/exteditor/ghostbird/issues/6)
+  * :white_check_mark: [Website with some screenshots](https://github.com/exteditor/ghostbird/issues/5)
+  * :white_check_mark: [Edit a HTML email as if it were a plain text email](https://github.com/exteditor/ghostbird/issues/6)
 
-* v0.x.x - 2025 Q4
+* v0.6.0 - Current
 
-  * :white_large_square: [Workaround for the problem where the email text is cleared when VSCod(e|ium) closes or saves the tab](https://github.com/exteditor/ghostbird/issues/23)
+  * :nest_with_eggs: [Workaround for the problem where the email text is cleared when VSCod(e|ium) closes or saves the tab](https://github.com/exteditor/ghostbird/issues/23)
 
 ### Stable
 
-* v1.0.0 - 2026 Q2
+* v1.0.0 - Current
 
-  * :white_large_square: [Mark as stable on AMO (functionally identical to the last beta)](https://github.com/exteditor/ghostbird/issues/9)
+  * :white_check_mark: [Mark as stable on AMO (functionally identical to the last beta)](https://github.com/exteditor/ghostbird/issues/9)
 
-* v1.x.x - 2026 Q4
+* v1.x.x - 2027 Q2
 
   * :white_large_square: [Edit Address and Subject fields](https://github.com/exteditor/ghostbird/issues/8)
-  * :white_large_square: [Support text editors that lack a GhostText add-on (e.g., Notepad)*](https://github.com/exteditor/ghostbird/issues/25)
-
-> \*Requires protocol extension and server-side support. I intend to develop one by forking [GhostText-Any](https://github.com/newsch/GhostText-Any/).
 
 ### Future
 
@@ -191,7 +188,9 @@ See also [a list of milestones][milestones].
     * :white_large_square: Bidirectional editing; changes in Thunderbird are reflected in the text editor
 
   * :white_large_square: Better handling of conflicts, disconnection, and reconnection (possibly extending the protocol)
-  * :white_large_square: [Automate AMO release on GitHub Action](https://github.com/exteditor/ghostbird/issues/27)
+  * :white_large_square: [Support text editors that lack a GhostText add-on (e.g., Notepad)*](https://github.com/exteditor/ghostbird/issues/25)
+
+> \*Requires protocol extension and server-side support. I intend to develop one by forking [GhostText-Any](https://github.com/newsch/GhostText-Any/).
 
 ### Non-goals
 
